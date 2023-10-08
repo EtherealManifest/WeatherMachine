@@ -10,9 +10,21 @@ const tempSwitch = document.querySelector(".FCswitch")
 //the button to clear the screen of all locations
 const clearButton = document.querySelector(".clear-er")
 /* searchKey can either be a zip code or City, State*/
+
+/*This is where the Settings can be defined as variables*/
+
+
 /*This tile list is the main list for all of the location tiles.
 locations should be added to and taken away from this directly*/
 let TileList = [];
+
+//ShowList is an array whose length is the same as the number of 
+//attributes returned by the API. It will be an array of 
+//Booleans, where each index corresponds to an attribute.
+//setting an index to false means that the correcponding attribute
+//will not be shown 
+let ShowList = new Array(34);
+
 
 //This function will take in a location to search for.
  //It will go the the API and return the information, distilling it
@@ -146,7 +158,8 @@ function displayList(){
             //for each attribute, create a <p> element and add it to the <div> element
             const newAttribute = document.createElement("p");
             //'attribute' is the name of the attribute, TileList[i][attribute] is the value of it
-            text = attribute + " : " + TileList[i][attribute];
+            //to make it look nicer, I am capitalizing the first letter of each attribute. 
+            text = attribute.charAt(0).toUpperCase() + attribute.slice(1) + " : " + TileList[i][attribute];
             //In order to create new HTML and add it to the document, they have to first take the form
             //of a node. That is created below 
             newNode = document.createTextNode(text);
@@ -190,7 +203,6 @@ class Weather{
         this.windMPH = 0;
         this.windKPH = 0;
         this.windDegree = 0;
-        this.windDirection = '';
         //look at this to determine whether its windy or nah
         this.wind = 0;
         this.windDirection = "";
