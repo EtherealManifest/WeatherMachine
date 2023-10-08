@@ -47,6 +47,12 @@ input[type="text"] {
     height: 30px;
 }
 
+.clear-er{
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
 .rainButton{
     width: 25px;
     border-width: 1px;
