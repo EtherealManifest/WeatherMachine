@@ -23,7 +23,7 @@ let TileList = [];
 //Booleans, where each index corresponds to an attribute.
 //setting an index to false means that the correcponding attribute
 //will not be shown 
-let ShowList = newArray(34);
+let ShowList = new Array(34);
 
 
 //This function will take in a location to search for.
