@@ -9,6 +9,8 @@ const searchButton = document.querySelector(".search button")
 const tempSwitch = document.querySelector(".FCswitch")
 //the button to clear the screen of all locations
 const clearButton = document.querySelector(".clear-er")
+//the button to allow the user to filter results
+const filterButton = document.querySelector(".filter-er")
 /* searchKey can either be a zip code or City, State*/
 
 /*This is where the Settings can be defined as variables*/
@@ -125,6 +127,16 @@ clearButton.addEventListener("click", ()=>{
     //then displaylist is run, removing locations
     displayList();
 })
+
+filterButton.addEventListener("click", ()=>{
+    //when the button is clicked, I want to generate a checklist of all the attributes.
+    let list = document.createElement("form")
+
+    let option = document.createElement("input")
+    //allow the user to select the data they want to show
+    list.append(option)
+    //then update the list to show this data
+})
 /*displayList will display the current TileList. 
 NOTICE: AT THE VERY BEGINNING OF THIS METHOD, IT CHECKS THE SIZE OF TILELIST.
 IF IT IS 0, IT WILL AUTOMATICALLY DELETE ALL THE TIMES IN THE QUEUE WHEN IT IS 
@@ -149,7 +161,7 @@ function displayList(){
 
     //for every tile in the tile list, create a new <div> element. Then, under that
     //<div> element, add a <p> element that holds each attribute for this weather item. 
-    for(let i = 0; i < TileList.length; i++){
+    let i = TileList.length - 1;
         //create a new <div> element with class "LocationTile" and put it in the "Queue" HTML element
         const newTile =document.createElement("div");
         //add the "LocationTile" Class to it. 
@@ -180,7 +192,7 @@ function displayList(){
         easier as each element is now targetable via the "attribute" class. 
         */
     }
-}
+
 class Weather{
     constructor(){
         this.name = "";
