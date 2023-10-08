@@ -153,8 +153,8 @@ function displayList(){
         //This makes retrieved a list of HTML Location Tags
         const retrieved = document.getElementsByClassName("LocationTile");
         //for every element in that list, remove it from "queue"
-        for(let i = 0; i < retrieved.length; i++){
-            queue.removeChild(retrieved[i]);
+        while(queue.hasChildNodes()){
+            queue.removeChild(queue.firstChild);
         }
         return;
     }
