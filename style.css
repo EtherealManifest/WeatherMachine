@@ -1,4 +1,9 @@
 
+.LocationTile{
+width: 200px;
+display: inline-block;
+}
+
 .projectTitle{
     text-align: center;
     font-size: 30px;
