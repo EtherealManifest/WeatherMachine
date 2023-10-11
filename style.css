@@ -109,3 +109,8 @@ input[type="text"] {
     border-color:silver;
     border-width: 5px;
 }
+.error-message{
+    text-align: center;
+    margin: -2px, -2px, -2px, -2px;
+    padding: 0px, 0px, 0px, 0px
+}

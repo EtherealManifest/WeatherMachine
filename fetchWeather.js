@@ -11,6 +11,8 @@ const tempSwitch = document.querySelector(".FCswitch")
 const clearButton = document.querySelector(".clear-er")
 //the button to allow the user to filter results
 const filterButton = document.querySelector(".filter-er")
+//the error message(if relevant)
+const errorMessage = document.querySelector(".error-message")
 /* searchKey can either be a zip code or City, State*/
 
 /*This is where the Settings can be defined as variables*/
@@ -34,9 +36,21 @@ let ShowList = new Array(34);
 //add that object to the TileList
 async function checkWeather(City){
     let tempLocation = new Weather();
-    const response = await fetch(apiURL + City + "&aqi=no");
-    var data = await response.json();
-
+    try{
+        const response = await fetch(apiURL + City + "&aqi=no");
+        if(response.status == 404 || response.status == 400 && response.status != 200){
+            throw Error(name = "Invalid Location", message = "Server responded with an error")
+        }
+        var data = await response.json();
+        errorMessage.innerHTML = null;
+    }
+    catch(error){
+        console.log(`${error.name}! ${error.message}`)
+        errorMessage.innerHTML = ("Request cannot be processed")
+        return
+    }
+       
+ 
     //The name of the location
     tempLocation.name = data.location.name;
     //The region (In the US, this is the state)
