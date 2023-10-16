@@ -11,23 +11,119 @@ const tempSwitch = document.querySelector(".FCswitch")
 const clearButton = document.querySelector(".clear-er")
 //the button to allow the user to filter results
 const filterButton = document.querySelector(".filter-er")
+const filterForm = document.querySelector(".filterForm")
 //the error message(if relevant)
 const errorMessage = document.querySelector(".error-message")
 /* searchKey can either be a zip code or City, State*/
 
 /*This is where the Settings can be defined as variables*/
+const nameEnabler = document.getElementById("name");
+const regionEnabler = document.getElementById("region");
+const countryEnabler = document.getElementById("country");
+const latitudeEnabler = document.getElementById("lat");
+const longitudeEnabler = document.getElementById("lon");
+const timeZoneIdEnabler = document.getElementById("tz_id");
+const epochTimeEnabler = document.getElementById("epochTime");
+const localTimeEnabler = document.getElementById("localTime");
+const lastUpdatedEpochEnabler = document.getElementById("lastUpdatedEpoch");
+const lastUpdatedLocalEnabler = document.getElementById("lastUpdatedLocal");
+const temperatureFEnabler = document.getElementById("temperatureF");
+const temperatureCEnabler = document.getElementById("temperatureC");
+const isDayEnabler = document.getElementById("isDay");
+const conditionEnabler = document.getElementById("condition");
+const conditionCodeEnabler = document.getElementById("conditionCode");
+const windKphEnabler = document.getElementById("windKPH");
+const windMphEnabler = document.getElementById("windMPH");
+const windDegreeEnabler = document.getElementById("windDegree");
+const windEnabler = document.getElementById("wind");
+const pressureMbEnabler = document.getElementById("pressureMb");
+const pressureInEnabler = document.getElementById("pressureIn");
+const precipInEnabler = document.getElementById("precipIn");
+const precipMmEnabler = document.getElementById("precipMm");
+const humidityEnabler = document.getElementById("humidity");
+const cloudEnabler = document.getElementById("cloud");
+const feelsLikeFEnabler = document.getElementById("feelsLikeF");
+const feelsLikeCEnabler = document.getElementById("feelsLikeC");
+const visibilityMiEnabler = document.getElementById("visibilityMi");
+const UVEnabler = document.getElementById("UV");
+const gustMphEnabler = document.getElementById("gustMPH");
+const gustKphEnabler = document.getElementById("gustKPH");
+const submitButton = document.getElementById("FilterSubmit")
 
 
+//this class exists purely to determine which elements will be displayed
+Displayed = {
+    constructor(){
+        this.name = false;
+        this.region = false;
+        this.country = false;
+        this.lat = false;
+        this.lon = false;
+        this.tz_id = false;
+        this.epochTime = false;
+        this.localTime = false;
+        this.lastUpdatedEpoch = false;
+        this.lastUpdatedLocalTime = false;
+        this.temperatureC = false;
+        this.temperatureF = false;
+        this.isDay = false;
+        this.condition = "";
+        this.conditionCode = false;
+        this.windMPH = false;
+        this.windKPH = false;
+        this.windDegree = false;this.wind = false;
+        this.windDirection = "";
+        this.tempButton;
+        this.pressureMb = false;
+        this.pressureIn = false;
+        this.precipMm = false;
+        this.precipIn = false;
+        this.humidity = false;this.cloud = false;
+        this.feelsLikeC = false;
+        this.feelsLikeF= false;
+        this.visibilityKM = false;
+        this.visibilityMi = false;
+        this.UV = false;
+        this.gustMph = false;
+        this.gustKph = false;
+    }}
+
+let elementsArray = document.querySelectorAll("#filterForm button");
+elementsArray.forEach(function(elem) {
+    console.log(`adding event listener for the ${elem.id} button`)
+    elem.style.color = "red";
+    elem.addEventListener("click", () => {
+        console.log(`${elem.id}'s color: ${elem.style.color}`)
+        Displayed[elem.id] = !Displayed[elem.id]
+        console.log(`Set Displayed's ${elem.id} to ${Displayed[elem.id]}`)
+        if (elem.style.color == "red"){
+            elem.style.color = "blue";
+            console.log(`${elem.id} color changed to ${elem.style.color}`)
+        }
+        else if(elem.style.color == "blue"){
+            elem.style.color = "red";
+            console.log(`${elem.id} color changed to ${elem.style.color}`)
+        }
+    })
+});
+
+//then I need to add the correct Event Listener to the Submit Button
+submitButton.addEventListener("click", () => {
+    //basically, just delete and redisplay the lis, as well as closing the 
+    //filter menu bar. 
+    //because of the implementation of Display, the only way to clear the queue is to have it 
+    //set the length of the queue to zero. so we will copy the queue. 
+    temp = TileList
+    TileList = []
+    displayList()
+    TileList = temp;
+    displayList()
+    document.getElementById("filterForm").style.display = "none";
+    submitButton.style.display = "none"
+})
 /*This tile list is the main list for all of the location tiles.
 locations should be added to and taken away from this directly*/
 let TileList = [];
-
-//ShowList is an array whose length is the same as the number of 
-//attributes returned by the API. It will be an array of 
-//Booleans, where each index corresponds to an attribute.
-//setting an index to false means that the correcponding attribute
-//will not be shown 
-let ShowList = new Array(34);
 
 
 //This function will take in a location to search for.
@@ -142,15 +238,27 @@ clearButton.addEventListener("click", ()=>{
     displayList();
 })
 
+//This method shows/hides the criteria filter menu
 filterButton.addEventListener("click", ()=>{
-    //when the button is clicked, I want to generate a checklist of all the attributes.
-    let list = document.createElement("form")
+    //when the button is clicked, It will show the list that is present in the HTML
+    //by setting the visibility to 'block'
+    var x = document.getElementById("filterForm");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+    var x = document.getElementById("FilterSubmit");
+    if (x.style.display === "none") {
+      x.style.display = "inline";
+    } else {
+      x.style.display = "none";
+    }
+  })
 
-    let option = document.createElement("input")
-    //allow the user to select the data they want to show
-    list.append(option)
-    //then update the list to show this data
-})
+function setValues(input){
+    console.log(input)
+}
 /*displayList will display the current TileList. 
 NOTICE: AT THE VERY BEGINNING OF THIS METHOD, IT CHECKS THE SIZE OF TILELIST.
 IF IT IS 0, IT WILL AUTOMATICALLY DELETE ALL THE TIMES IN THE QUEUE WHEN IT IS 
@@ -181,20 +289,22 @@ function displayList(){
         //add the "LocationTile" Class to it. 
         newTile.classList.add("LocationTile");
         for (attribute in TileList[i]){
-            //for each attribute, create a <p> element and add it to the <div> element
-            const newAttribute = document.createElement("p");
-            //'attribute' is the name of the attribute, TileList[i][attribute] is the value of it
-            //to make it look nicer, I am capitalizing the first letter of each attribute. 
-            text = attribute.charAt(0).toUpperCase() + attribute.slice(1) + " : " + TileList[i][attribute];
-            //In order to create new HTML and add it to the document, they have to first take the form
-            //of a node. That is created below 
-            newNode = document.createTextNode(text);
-            //add the 'attribute' class to it
-            newAttribute.classList.add("attribute");
-            //then append this new Node to the attribute that we created
-            newAttribute.appendChild(newNode)
-            //then append that new attribute Element up to the created Tile
-            newTile.appendChild(newAttribute)
+            if(Displayed[attribute]){
+                //for each attribute, create a <p> element and add it to the <div> element
+                const newAttribute = document.createElement("p");
+                //'attribute' is the name of the attribute, TileList[i][attribute] is the value of it
+                //to make it look nicer, I am capitalizing the first letter of each attribute. 
+                text = attribute.charAt(0).toUpperCase() + attribute.slice(1) + " : " + TileList[i][attribute];
+                //In order to create new HTML and add it to the document, they have to first take the form
+                //of a node. That is created below 
+                newNode = document.createTextNode(text);
+                //add the 'attribute' class to it
+                newAttribute.classList.add("attribute");
+                //then append this new Node to the attribute that we created
+                newAttribute.appendChild(newNode)
+                //then append that new attribute Element up to the created Tile
+                newTile.appendChild(newAttribute)
+            }
         }
         //finally, append the new Tile into the queue. This tile contains all of the data from the 
         //dataframe, with /undefined/ anywhere that nothing was found in the Database
@@ -208,6 +318,8 @@ function displayList(){
     }
 
 class Weather{
+    //Each element in the constructor is a tuple, see. the first element is the data to be displayed. 
+    //the second is a boolean that denoted whether or not it should be displayed. 
     constructor(){
         this.name = "";
         this.region = "";

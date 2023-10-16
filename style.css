@@ -114,3 +114,15 @@ input[type="text"] {
     margin: -2px, -2px, -2px, -2px;
     padding: 0px, 0px, 0px, 0px
 }
+
+#filterForm{
+    display: none;
+    z-index: 99;
+    position: absolute;
+    background-image: linear-gradient(white, silver);
+    
+}
+
+#FilterSubmit{
+    display:none;
+}
