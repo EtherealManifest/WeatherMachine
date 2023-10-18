@@ -49,11 +49,84 @@ const UVEnabler = document.getElementById("UV");
 const gustMphEnabler = document.getElementById("gustMPH");
 const gustKphEnabler = document.getElementById("gustKPH");
 const submitButton = document.getElementById("FilterSubmit")
+const enableAllButton = document.getElementById("EnableAll")
+const disableAllButton = document.getElementById("DisableAll")
 
 
 //this class exists purely to determine which elements will be displayed
 Displayed = {
-    constructor(){
+        name: false,
+        region : false,
+        country : false,
+        lat : false,
+        lon : false,
+        tz_id : false,
+        epochTime : false,
+        localTime : false,
+        lastUpdatedEpoch : false,
+        lastUpdatedLocalTime : false,
+        temperatureC : false,
+        temperatureF : false,
+        isDay : false,
+        condition : false,
+        conditionCode : false,
+        windMPH : false,
+        windKPH : false,
+        windDegree : false,
+        wind : false,
+        windDirection : false,
+        pressureMb : false,
+        pressureIn : false,
+        precipMm : false,
+        precipIn : false,
+        humidity : false,
+        cloud : false,
+        feelsLikeC : false,
+        feelsLikeF: false,
+        visibilityKM : false,
+        visibilityMi : false,
+        UV : false,
+        gustMph : false,
+        gustKph : false,
+        setAll(){
+            console.log("setting all")
+            this.name = true;
+            this.region = true;
+            this.country = true;
+            this.lat = true;
+            this.lon = true;
+            this.tz_id = true;
+            this.epochTime = true;
+            this.localTime = true;
+            this.lastUpdatedEpoch = true;
+            this.lastUpdatedLocal = true;
+            this.temperatureC = true;
+            this.temperatureF = true;
+            this.isDay = true;
+            this.condition = true;
+            this.conditionCode = true;
+            this.windMPH = true;
+            this.windKPH = true;
+            this.windDegree = true;
+            this.wind = true;
+            this.windDirection = false;
+            this.pressureMb = true;
+            this.pressureIn = true;
+            this.precipMm = true;
+            this.precipIn = true;
+            this.humidity = true;
+            this.cloud = true;
+            this.feelsLikeC = true;
+            this.feelsLikeF= true;
+            this.visibilityKM = true;
+            this.visibilityMi = true;
+            this.UV = true;
+            this.gustMph = true;
+            this.gustKph = true;
+            updateColor();
+    },
+    unsetAll(){
+        console.log("setting all")
         this.name = false;
         this.region = false;
         this.country = false;
@@ -63,22 +136,23 @@ Displayed = {
         this.epochTime = false;
         this.localTime = false;
         this.lastUpdatedEpoch = false;
-        this.lastUpdatedLocalTime = false;
+        this.lastUpdatedLocal = false;
         this.temperatureC = false;
         this.temperatureF = false;
         this.isDay = false;
-        this.condition = "";
+        this.condition = false;
         this.conditionCode = false;
         this.windMPH = false;
         this.windKPH = false;
-        this.windDegree = false;this.wind = false;
-        this.windDirection = "";
-        this.tempButton;
+        this.windDegree = false;
+        this.wind = false;
+        this.windDirection = false;
         this.pressureMb = false;
         this.pressureIn = false;
         this.precipMm = false;
         this.precipIn = false;
-        this.humidity = false;this.cloud = false;
+        this.humidity = false;
+        this.cloud = false;
         this.feelsLikeC = false;
         this.feelsLikeF= false;
         this.visibilityKM = false;
@@ -86,26 +160,42 @@ Displayed = {
         this.UV = false;
         this.gustMph = false;
         this.gustKph = false;
-    }}
+        updateColor();
+    }
+    }
 
 let elementsArray = document.querySelectorAll("#filterForm button");
 elementsArray.forEach(function(elem) {
-    console.log(`adding event listener for the ${elem.id} button`)
     elem.style.color = "red";
     elem.addEventListener("click", () => {
         console.log(`${elem.id}'s color: ${elem.style.color}`)
         Displayed[elem.id] = !Displayed[elem.id]
-        console.log(`Set Displayed's ${elem.id} to ${Displayed[elem.id]}`)
         if (elem.style.color == "red"){
             elem.style.color = "blue";
-            console.log(`${elem.id} color changed to ${elem.style.color}`)
         }
         else if(elem.style.color == "blue"){
             elem.style.color = "red";
-            console.log(`${elem.id} color changed to ${elem.style.color}`)
         }
     })
 });
+
+function updateColor(){
+    elementsArray.forEach(function(elem) {
+        if (Displayed[elem.id] == true){
+            elem.style.color = "blue";
+        }
+        else{
+            elem.style.color = "red"
+        }
+    })};
+
+
+enableAllButton.addEventListener("click", ()=> {
+    Displayed.setAll();
+})
+disableAllButton.addEventListener("click", ()=>{
+    Displayed.unsetAll();
+})
 
 //then I need to add the correct Event Listener to the Submit Button
 submitButton.addEventListener("click", () => {
@@ -120,6 +210,8 @@ submitButton.addEventListener("click", () => {
     displayList()
     document.getElementById("filterForm").style.display = "none";
     submitButton.style.display = "none"
+    enableAllButton.style.display = "none";
+    disableAllButton.style.display = "none";
 })
 /*This tile list is the main list for all of the location tiles.
 locations should be added to and taken away from this directly*/
@@ -249,6 +341,18 @@ filterButton.addEventListener("click", ()=>{
       x.style.display = "none";
     }
     var x = document.getElementById("FilterSubmit");
+    if (x.style.display === "none") {
+      x.style.display = "inline";
+    } else {
+      x.style.display = "none";
+    }
+    var x = document.getElementById("EnableAll");
+    if (x.style.display === "none") {
+      x.style.display = "inline";
+    } else {
+      x.style.display = "none";
+    }
+    var x = document.getElementById("DisableAll");
     if (x.style.display === "none") {
       x.style.display = "inline";
     } else {
