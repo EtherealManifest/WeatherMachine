@@ -1,6 +1,7 @@
 const apiURL = "http://api.weatherapi.com/v1/current.json?key=bfaf6f3581b14ed88fc233827231009&q=";
 //http://api.weatherapi.com/v1/current.json?key=bfaf6f3581b14ed88fc233827231009&q=67601&aqi=no
 
+const card = document.querySelector('.card')
 //The input box for the search
 const searchBox = document.querySelector(".search input")
 //the button the user pusher to search after they have entered a location
@@ -15,7 +16,6 @@ const filterForm = document.querySelector(".filterForm")
 //the error message(if relevant)
 const errorMessage = document.querySelector(".error-message")
 /* searchKey can either be a zip code or City, State*/
-
 /*This is where the Settings can be defined as variables*/
 const nameEnabler = document.getElementById("name");
 const regionEnabler = document.getElementById("region");
