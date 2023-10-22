@@ -188,7 +188,7 @@ function updateColor(){
             elem.style.color = "red"
         }
     })};
-
+updateColor();
 
 enableAllButton.addEventListener("click", ()=> {
     Displayed.setAll();
