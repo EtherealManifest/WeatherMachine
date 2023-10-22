@@ -140,3 +140,37 @@ input[type="text"] {
 #DisableAll{
     display:none;
 }
+
+#delete-button{
+    width: 25px;
+    height:25px;
+    background-color:steelblue;
+    border-width: 2px;
+    border-color: black;
+    background-image:url(images/delete_closed.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    
+}
+#delete-button:hover{
+    width: 27px;
+    height:27px;
+    background-image:url(images/delete_open.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-width: 1px;
+    background-size: 80%;
+    transition: 0.2s;
+}
+#delete-button:active{ 
+    width: 25px;
+    height:25px;
+    background-color: black;
+    background-image:url(images/delete_open.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    box-shadow: 0px 0px 2px 2px black;
+    transition: 0.2s;
+}
