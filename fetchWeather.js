@@ -55,9 +55,9 @@ const disableAllButton = document.getElementById("DisableAll")
 
 //this class exists purely to determine which elements will be displayed
 Displayed = {
-        name: false,
+        name: true,
         region : false,
-        country : false,
+        country : true,
         lat : false,
         lon : false,
         tz_id : false,
@@ -65,7 +65,7 @@ Displayed = {
         localTime : false,
         lastUpdatedEpoch : false,
         lastUpdatedLocalTime : false,
-        temperatureC : false,
+        temperatureC : true,
         temperatureF : false,
         isDay : false,
         condition : false,
