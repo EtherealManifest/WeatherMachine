@@ -439,9 +439,7 @@ function displayList(){
             })
             clearTileButton.classList.add(i)
             //FIXME: CHANGE THIS TO A PICTURE 
-            let clearTileButtonText = document.createTextNode("Remove");
-            // appending text to button
-            clearTileButton.appendChild(clearTileButtonText);
+            clearTileButton.setAttribute('id','delete-button');
             // appending button to div
             newTile.appendChild(clearTileButton);
         //finally, append the new Tile into the queue. This tile contains all of the data from the 
