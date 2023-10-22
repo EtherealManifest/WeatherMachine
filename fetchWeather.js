@@ -206,6 +206,8 @@ submitButton.addEventListener("click", () => {
     temp = TileList
     TileList = []
     displayList()
+    //second call to display list is because the first one displays an empty list, then the 
+    //second one displays the updated list
     TileList = temp;
     displayList()
     document.getElementById("filterForm").style.display = "none";
@@ -308,6 +310,10 @@ async function checkWeather(City){
 
     //Having collected all of this information, return it.
     TileList.push(tempLocation)
+    let temp = TileList
+    TileList = [];
+    displayList();
+    TileList = temp;
     displayList();
 }
 
@@ -388,6 +394,7 @@ function displayList(){
     //for every tile in the tile list, create a new <div> element. Then, under that
     //<div> element, add a <p> element that holds each attribute for this weather item. 
     let i = TileList.length - 1;
+    for( i = 0; i < TileList.length; i++){
         //create a new <div> element with class "LocationTile" and put it in the "Queue" HTML element
         const newTile =document.createElement("div");
         //add the "LocationTile" Class to it. 
@@ -410,15 +417,50 @@ function displayList(){
                 newTile.appendChild(newAttribute)
             }
         }
+        //this adds a clearbutton with a class that is it's index in the list.
+        //when it gets called to clear this tile from the list, it will look to this class to 
+        //figure out which tile to remove.
+        let clearTileButton = document.createElement('BUTTON');
+            // creating text to be
+            //displayed on button
+            let index = i
+            clearTileButton.addEventListener("click", ()=>{
+                if(TileList.length == 1){
+                    TileList = [];
+                    displayList();
+                    return
+                }
+                TileList.splice(index, 1)
+                let temp = TileList
+                TileList = [];
+                displayList();
+                TileList = temp;
+                displayList();
+            })
+            clearTileButton.classList.add(i)
+            //FIXME: CHANGE THIS TO A PICTURE 
+            let clearTileButtonText = document.createTextNode("Remove");
+            // appending text to button
+            clearTileButton.appendChild(clearTileButtonText);
+            // appending button to div
+            newTile.appendChild(clearTileButton);
         //finally, append the new Tile into the queue. This tile contains all of the data from the 
         //dataframe, with /undefined/ anywhere that nothing was found in the Database
         queue.appendChild(newTile);
+    }
 
         /*As an addendum, this looks really complicated. the reason i have a <p> in a <div> is because the 
         original formatting set is as a super long string. adding \n to the end of the attributes wouldn't
         fix it either. this seems to make it look better, and potentially allows us to manipulate the data 
         easier as each element is now targetable via the "attribute" class. 
         */
+    }
+
+    function removeElement(elementnum){
+        //find the element with elementName as its title, and remove it from TileList, then
+        //redraw the Queue
+        return;
+
     }
 
 class Weather{
@@ -448,7 +490,6 @@ class Weather{
         //look at this to determine whether its windy or nah
         this.wind = 0;
         this.windDirection = "";
-        this.tempButton;
         this.pressureMb = 0;
         this.pressureIn = 0;
         this.precipMm = 0;
