@@ -55,9 +55,9 @@ const disableAllButton = document.getElementById("DisableAll")
 
 //this class exists purely to determine which elements will be displayed
 Displayed = {
-        name: false,
+        name: true,
         region : false,
-        country : false,
+        country : true,
         lat : false,
         lon : false,
         tz_id : false,
@@ -65,7 +65,7 @@ Displayed = {
         localTime : false,
         lastUpdatedEpoch : false,
         lastUpdatedLocalTime : false,
-        temperatureC : false,
+        temperatureC : true,
         temperatureF : false,
         isDay : false,
         condition : false,
@@ -211,6 +211,7 @@ submitButton.addEventListener("click", () => {
     TileList = temp;
     displayList()
     document.getElementById("filterForm").style.display = "none";
+    filterButton.textContent = "Filter Results";
     submitButton.style.display = "none"
     enableAllButton.style.display = "none";
     disableAllButton.style.display = "none";
@@ -341,28 +342,34 @@ filterButton.addEventListener("click", ()=>{
     //when the button is clicked, It will show the list that is present in the HTML
     //by setting the visibility to 'block'
     var x = document.getElementById("filterForm");
-    if (x.style.display === "none") {
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
       x.style.display = "block";
-    } else {
-      x.style.display = "none";
     }
+    x = document.querySelector(".filter-er")
+    if (x.textContent === "Filter Results") {
+        x.textContent = "";
+      } else {
+        x.textContent = "Filter Results";
+      }
     var x = document.getElementById("FilterSubmit");
-    if (x.style.display === "none") {
-      x.style.display = "inline";
-    } else {
+    if (x.style.display === "inline") {
       x.style.display = "none";
+    } else {
+      x.style.display = "inline";
     }
     var x = document.getElementById("EnableAll");
-    if (x.style.display === "none") {
-      x.style.display = "inline";
-    } else {
+    if (x.style.display === "inline") {
       x.style.display = "none";
+    } else {
+      x.style.display = "inline";
     }
     var x = document.getElementById("DisableAll");
-    if (x.style.display === "none") {
-      x.style.display = "inline";
-    } else {
+    if (x.style.display === "inline") {
       x.style.display = "none";
+    } else {
+      x.style.display = "inline";
     }
   })
 
