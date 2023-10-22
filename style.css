@@ -2,6 +2,7 @@
 .LocationTile{
 width: 200px;
 display: inline-block;
+font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
 .projectTitle{
@@ -92,11 +93,12 @@ input[type="text"] {
     background-image: linear-gradient(lightblue, rgb(72, 130, 154));
     float: center;
     margin-top: 10px;
+    border-radius: 10px;
 }
 
 .attribute{
     border-style: solid;
-    border-width: 1px;
+    border-width: 0px;
     border-color: black;
     padding-top: 0px;
     padding-bottom: 0px;
@@ -105,6 +107,7 @@ input[type="text"] {
     font-weight: bold;
     max-width: 200px;
     margin: 0 auto;
+    border-radius: 4px
 }
 
 #queue{
