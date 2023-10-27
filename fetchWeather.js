@@ -322,7 +322,14 @@ async function checkWeather(City){
  NOTICE: CLICKING THE SEARCH BUTTON AUTOMATICALLY ADDS THE 
  LOCATION TO THE QUEUE*/
 searchButton.addEventListener("click", ()=>{
-    checkWeather(searchBox.value)
+    //add a check to make sure that the QUEUE is not longer than 10 tiles
+    if(TileList.length == 10){
+        errorMessage.innerHTML = "Too Many Locations! Please Clear a Location Before Adding Another."
+    }
+    else{
+        errorMessage.innerHTML = null;
+        checkWeather(searchBox.value)
+    }
 })
 //Display list has a check at the beginning of it that examines the current size of TileList
 //If it is empty, it will remove locations from the queue until it is empty. 
@@ -333,6 +340,8 @@ clearButton.addEventListener("click", ()=>{
     TileList = [];
     //then displaylist is run, removing locations
     displayList();
+    //also remember to clear out the error message if th euser has entered too many locations
+    errorMessage.innerHTML = null;
 })
 
 //This method shows/hides the criteria filter menu
@@ -370,7 +379,7 @@ filterButton.addEventListener("click", ()=>{
     // } else {
     //   x.style.display = "inline";
     // }
-  })
+})
 
 function setValues(input){
     console.log(input)

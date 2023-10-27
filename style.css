@@ -55,11 +55,23 @@ input[type="text"] {
     background-size: 30px 30px;
 }
 
-
 .clear-er{
     display: block;
     margin: 0 auto;
-    margin-top: 5px;
+    margin-top: -5px;
+}
+.clear-er:hover{
+    background-color: firebrick;
+    color: white;
+    box-shadow: 0px 0px 5px 9px red;
+    transition: 5s;
+}
+
+.clear-er:active{
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 0px 0px;
+    transition: 0s;
 }
 
 .rainButton{
@@ -141,8 +153,6 @@ input[type="text"] {
     width: 25px;
     height:25px;
     background-color:steelblue;
-    border-width: 2px;
-    border-color: black;
     background-image:url(images/delete_closed.png);
     background-position: center center;
     background-repeat: no-repeat;
@@ -155,7 +165,6 @@ input[type="text"] {
     background-image:url(images/delete_open.png);
     background-position: center center;
     background-repeat: no-repeat;
-    border-width: 1px;
     background-size: 80%;
     transition: 0.2s;
 }

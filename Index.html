@@ -18,7 +18,13 @@
 <body>
     <div class="card">
         <div id = "filter">
-            <button class = "filter-er">Filter Results</button>
+            
+        <div class ="search">
+            <input type="text" placeholder="Please select a city"
+            spellcheck="false">
+            <button><img class = "searchButton"></button>
+        </div>
+        <button class = "filter-er">Filter Results</button>
             <div id ="filterForm">
                 <button type="button" id="name" >Name</button>
                 <button type="button" id="region">Region</button>
@@ -54,11 +60,6 @@
             </div>
             <button type="button" id="EnableAll">Enable All</button>
             <button type="button" id="DisableAll">Disable All</button>
-        </div>
-        <div class ="search">
-            <input type="text" placeholder="Please select a city"
-            spellcheck="false">
-            <button><img class = "searchButton"></button>
         </div>
         <p class ="error-message">None</p>
         <button class = "clear-er">Cast them into the fire</button>
