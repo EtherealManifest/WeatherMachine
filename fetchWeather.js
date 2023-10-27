@@ -366,19 +366,6 @@ filterButton.addEventListener("click", ()=>{
         enableAllButton.style.display = "inline";
         disableAllButton.style.display = "inline";
       }
-    //leftover code I was afraid to delete. -Drayton
-    // var x = document.getElementById("EnableAll");
-    // if (x.style.display === "inline") {
-    //   x.style.display = "none";
-    // } else {
-    //   x.style.display = "inline";
-    // }
-    // var x = document.getElementById("DisableAll");
-    // if (x.style.display === "inline") {
-    //   x.style.display = "none";
-    // } else {
-    //   x.style.display = "inline";
-    // }
 })
 
 function setValues(input){
