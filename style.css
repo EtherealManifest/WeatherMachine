@@ -55,11 +55,10 @@ input[type="text"] {
     background-size: 30px 30px;
 }
 
-
 .clear-er{
     display: block;
     margin: 0 auto;
-    margin-top: 5px;
+    margin-top: -5px;
 }
 .clear-er:hover{
     background-color: firebrick;
