@@ -129,10 +129,6 @@ input[type="text"] {
     
 }
 
-#FilterSubmit{
-    display:none;
-}
-
 #EnableAll{
     display:none;
 }

@@ -48,7 +48,6 @@ const visibilityMiEnabler = document.getElementById("visibilityMi");
 const UVEnabler = document.getElementById("UV");
 const gustMphEnabler = document.getElementById("gustMPH");
 const gustKphEnabler = document.getElementById("gustKPH");
-const submitButton = document.getElementById("FilterSubmit")
 const enableAllButton = document.getElementById("EnableAll")
 const disableAllButton = document.getElementById("DisableAll")
 
@@ -197,8 +196,8 @@ disableAllButton.addEventListener("click", ()=>{
     Displayed.unsetAll();
 })
 
-//then I need to add the correct Event Listener to the Submit Button
-submitButton.addEventListener("click", () => {
+//This was previously an event listener, but I 
+function saveSettings() {
     //basically, just delete and redisplay the lis, as well as closing the 
     //filter menu bar. 
     //because of the implementation of Display, the only way to clear the queue is to have it 
@@ -212,10 +211,9 @@ submitButton.addEventListener("click", () => {
     displayList()
     document.getElementById("filterForm").style.display = "none";
     filterButton.textContent = "Filter Results";
-    submitButton.style.display = "none"
     enableAllButton.style.display = "none";
     disableAllButton.style.display = "none";
-})
+}
 /*This tile list is the main list for all of the location tiles.
 locations should be added to and taken away from this directly*/
 let TileList = [];
@@ -347,30 +345,31 @@ filterButton.addEventListener("click", ()=>{
     } else {
       x.style.display = "block";
     }
+    //the filter and submit button is split into two parts.
     x = document.querySelector(".filter-er")
-    if (x.textContent === "Filter Results") {
-        x.textContent = "";
-      } else {
-        x.textContent = "Filter Results";
+        //When the Submit ad Apply button is clicked, it will run this function to update the display
+    if (x.textContent === "Submit and Apply") {
+        saveSettings();
+      } 
+       //When the filter button is clicked, it will change over to the submit and apply button, and show everything
+      else {
+        x.textContent = "Submit and Apply";
+        enableAllButton.style.display = "inline";
+        disableAllButton.style.display = "inline";
       }
-    var x = document.getElementById("FilterSubmit");
-    if (x.style.display === "inline") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "inline";
-    }
-    var x = document.getElementById("EnableAll");
-    if (x.style.display === "inline") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "inline";
-    }
-    var x = document.getElementById("DisableAll");
-    if (x.style.display === "inline") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "inline";
-    }
+    //leftover code I was afraid to delete. -Drayton
+    // var x = document.getElementById("EnableAll");
+    // if (x.style.display === "inline") {
+    //   x.style.display = "none";
+    // } else {
+    //   x.style.display = "inline";
+    // }
+    // var x = document.getElementById("DisableAll");
+    // if (x.style.display === "inline") {
+    //   x.style.display = "none";
+    // } else {
+    //   x.style.display = "inline";
+    // }
   })
 
 function setValues(input){
