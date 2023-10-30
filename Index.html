@@ -12,13 +12,22 @@
     
 <header>
 <div class="projectTitle">Weather Machine</div>
-<div class="projectDescription">A little info on what the site does/what it is used for.</div>
+<div class="projectDescription">Weather Machine is a group project that we have been working on for our software engineering class.<br>
+    By entering a location into the search bar you will be able to see many different attributes of the weather conditions in the specified location.<br>
+    You can choose to search additional locations in order to compare some of the attributes them or use the filter to display only the wanted information.
+</div>
 </header>
 
 <body>
     <div class="card">
         <div id = "filter">
-            <button class = "filter-er">Filter Results</button>
+            
+        <div class ="search">
+            <input type="text" placeholder="Please select a city"
+            spellcheck="false">
+            <button><img class = "searchButton"></button>
+        </div>
+        <button class = "filter-er">Filter Results</button>
             <div id ="filterForm">
                 <button type="button" id="name" >Name</button>
                 <button type="button" id="region">Region</button>
@@ -52,16 +61,10 @@
                 <button type="button" id="gustMph"> Gust Speed (Mph)</button>
                 <button type="button" id="gustKph">Gust Speed (Kph)</button>
             </div>
-            <button type="button" id="FilterSubmit">Submit and Apply</button>
             <button type="button" id="EnableAll">Enable All</button>
             <button type="button" id="DisableAll">Disable All</button>
         </div>
-        <div class ="search">
-            <input type="text" placeholder="Please select a city"
-            spellcheck="false">
-            <button><img class = "searchButton"></button>
-        </div>
-        <p class ="error-message">None</p>
+        <p class ="error-message"></p>
         <button class = "clear-er">Cast them into the fire</button>
         <div id = "queue"></div>
     </div>

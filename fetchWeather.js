@@ -48,12 +48,15 @@ const visibilityMiEnabler = document.getElementById("visibilityMi");
 const UVEnabler = document.getElementById("UV");
 const gustMphEnabler = document.getElementById("gustMPH");
 const gustKphEnabler = document.getElementById("gustKPH");
-const submitButton = document.getElementById("FilterSubmit")
 const enableAllButton = document.getElementById("EnableAll")
 const disableAllButton = document.getElementById("DisableAll")
 
+let comparePress = "false"
+let compareTile
+
 
 //this class exists purely to determine which elements will be displayed
+//true means it's on by default, false means it is not
 Displayed = {
         name: true,
         region : false,
@@ -201,8 +204,8 @@ disableAllButton.addEventListener("click", ()=>{
     Displayed.unsetAll();
 })
 
-//then I need to add the correct Event Listener to the Submit Button
-submitButton.addEventListener("click", () => {
+//This was previously an event listener, but I 
+function saveSettings() {
     //basically, just delete and redisplay the lis, as well as closing the 
     //filter menu bar. 
     //because of the implementation of Display, the only way to clear the queue is to have it 
@@ -216,10 +219,9 @@ submitButton.addEventListener("click", () => {
     displayList()
     document.getElementById("filterForm").style.display = "none";
     filterButton.textContent = "Filter Results";
-    submitButton.style.display = "none"
     enableAllButton.style.display = "none";
     disableAllButton.style.display = "none";
-})
+}
 /*This tile list is the main list for all of the location tiles.
 locations should be added to and taken away from this directly*/
 let TileList = [];
@@ -360,30 +362,23 @@ filterButton.addEventListener("click", ()=>{
     } else {
       x.style.display = "block";
     }
+    //the filter and submit button is split into two parts.
     x = document.querySelector(".filter-er")
-    if (x.style.display != "none") {
-        x.style.display = "none";
+        //When the Submit ad Apply button is clicked, it will run this function to update the display
+    if (x.textContent === "Submit and Apply") {
+        saveSettings();
       } 
-    var x = document.getElementById("FilterSubmit");
-    if (x.style.display === "inline") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "inline";
-    }
-    var x = document.getElementById("EnableAll");
-    if (x.style.display === "inline") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "inline";
-    }
-    var x = document.getElementById("DisableAll");
-    if (x.style.display === "inline") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "inline";
-    }
-  })
+       //When the filter button is clicked, it will change over to the submit and apply button, and show everything
+      else {
+        x.textContent = "Submit and Apply";
+        enableAllButton.style.display = "inline";
+        disableAllButton.style.display = "inline";
+      }
+})
 
+function setValues(input){
+    console.log(input)
+}
 /*displayList will display the current TileList. 
 NOTICE: AT THE VERY BEGINNING OF THIS METHOD, IT CHECKS THE SIZE OF TILELIST.
 IF IT IS 0, IT WILL AUTOMATICALLY DELETE ALL THE TIMES IN THE QUEUE WHEN IT IS 
@@ -458,11 +453,36 @@ function displayList(){
             clearTileButton.setAttribute('id','delete-button');
             // appending button to div
             newTile.appendChild(clearTileButton);
-        //set the background to the current weather condition:
+
+            ////////////////////////////////////////////////////////////////////////////////////////
+            //this adds a compare tile button with a class that is it's index in the list.
+            
+            let compareTileButton = document.createElement('BUTTON');
+ 
+            let indexCompare = i
+            let comparePress = false
+            compareTileButton.addEventListener("click", ()=>{
+                if(comparePress == false){
+                    compareTile = newTile
+                    console.log(newTile.temp_c)
+                    console.log(compareTile.temp_c)
+                    comparePress = true;
+                    return
+                }
+                compareTile.temp_c -= newTile
+                console.log(compareTile.temp_c)
+                comparePress = false;
+            })
+            compareTileButton.classList.add(i)
+            compareTileButton.setAttribute('id','compare-button');
+            newTile.appendChild(compareTileButton);
+            /////////////////////////////////////////////////////////////////////////////////////////
 
         //finally, append the new Tile into the queue. This tile contains all of the data from the 
         //dataframe, with /undefined/ anywhere that nothing was found in the Database
         queue.appendChild(newTile);
+
+        
     }
 
         /*As an addendum, this looks really complicated. the reason i have a <p> in a <div> is because the 

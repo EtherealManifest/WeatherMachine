@@ -55,11 +55,10 @@ input[type="text"] {
     background-size: 30px 30px;
 }
 
-
 .clear-er{
     display: block;
     margin: 0 auto;
-    margin-top: 5px;
+    margin-top: -5px;
 }
 .clear-er:hover{
     background-color: firebrick;
@@ -142,10 +141,6 @@ input[type="text"] {
     
 }
 
-#FilterSubmit{
-    display:none;
-}
-
 #EnableAll{
     display:none;
 }
@@ -183,4 +178,14 @@ input[type="text"] {
     background-size: 75%;
     box-shadow: 0px 0px 2px 2px black;
     transition: 0.2s;
+}
+
+#compare-button{
+    width: 25px;
+    height:25px;
+    background-color:steelblue;
+    background-image:url(images/delete_open.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75%;
 }
