@@ -88,6 +88,8 @@ Displayed = {
         UV : false,
         gustMph : false,
         gustKph : false,
+        //weatherImage is the picture based on the current 'condition'
+        weatherImage : false,
         setAll(){
             console.log("setting all")
             this.name = true;
@@ -123,6 +125,7 @@ Displayed = {
             this.UV = true;
             this.gustMph = true;
             this.gustKph = true;
+            this.weatherImage = true;
             updateColor();
     },
     unsetAll(){
@@ -160,6 +163,7 @@ Displayed = {
         this.UV = false;
         this.gustMph = false;
         this.gustKph = false;
+        this.weatherImage = false;
         updateColor();
     }
     }
@@ -412,6 +416,7 @@ function displayList(){
         newTile.classList.add("LocationTile");
         for (attribute in TileList[i]){
             if(Displayed[attribute]){
+                //add an if-check to set the weather Icon. it will need to be added as an img element
                 //for each attribute, create a <p> element and add it to the <div> element
                 const newAttribute = document.createElement("p");
                 //'attribute' is the name of the attribute, TileList[i][attribute] is the value of it
@@ -453,6 +458,8 @@ function displayList(){
             clearTileButton.setAttribute('id','delete-button');
             // appending button to div
             newTile.appendChild(clearTileButton);
+        //set the background to the current weather condition:
+
         //finally, append the new Tile into the queue. This tile contains all of the data from the 
         //dataframe, with /undefined/ anywhere that nothing was found in the Database
         queue.appendChild(newTile);
@@ -514,6 +521,7 @@ class Weather{
         this.UV = 0;
         this.gustMph = 0;
         this.gustKph = 0;
+        this.weatherImage = "";
     }
     /**
      * THIS IS NOT CODE, THIS IS THE OUTPUT FROM A TEST RUN OF POLLING THE DATABASE, FORMATTED. 
