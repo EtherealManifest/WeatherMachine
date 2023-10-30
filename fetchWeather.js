@@ -51,8 +51,12 @@ const gustKphEnabler = document.getElementById("gustKPH");
 const enableAllButton = document.getElementById("EnableAll")
 const disableAllButton = document.getElementById("DisableAll")
 
+let comparePress = "false"
+let compareTile
+
 
 //this class exists purely to determine which elements will be displayed
+//true means it's on by default, false means it is not
 Displayed = {
         name: true,
         region : false,
@@ -444,9 +448,36 @@ function displayList(){
             clearTileButton.setAttribute('id','delete-button');
             // appending button to div
             newTile.appendChild(clearTileButton);
+
+            ////////////////////////////////////////////////////////////////////////////////////////
+            //this adds a compare tile button with a class that is it's index in the list.
+            
+            let compareTileButton = document.createElement('BUTTON');
+ 
+            let indexCompare = i
+            let comparePress = false
+            compareTileButton.addEventListener("click", ()=>{
+                if(comparePress == false){
+                    compareTile = newTile
+                    console.log(newTile.temp_c)
+                    console.log(compareTile.temp_c)
+                    comparePress = true;
+                    return
+                }
+                compareTile.temp_c -= newTile
+                console.log(compareTile.temp_c)
+                comparePress = false;
+            })
+            compareTileButton.classList.add(i)
+            compareTileButton.setAttribute('id','compare-button');
+            newTile.appendChild(compareTileButton);
+            /////////////////////////////////////////////////////////////////////////////////////////
+
         //finally, append the new Tile into the queue. This tile contains all of the data from the 
         //dataframe, with /undefined/ anywhere that nothing was found in the Database
         queue.appendChild(newTile);
+
+        
     }
 
         /*As an addendum, this looks really complicated. the reason i have a <p> in a <div> is because the 
