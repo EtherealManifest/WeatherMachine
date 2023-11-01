@@ -1,3 +1,5 @@
+import {Weather, Comparison} from "./Class.js";
+
 const apiURL = "http://api.weatherapi.com/v1/current.json?key=bfaf6f3581b14ed88fc233827231009&q=";
 //http://api.weatherapi.com/v1/current.json?key=bfaf6f3581b14ed88fc233827231009&q=67601&aqi=no
 
@@ -51,13 +53,14 @@ const gustKphEnabler = document.getElementById("gustKPH");
 const enableAllButton = document.getElementById("EnableAll")
 const disableAllButton = document.getElementById("DisableAll")
 
+
 let comparePress = "false"
 let compareTile
-
+let ComparisonZone = new Comparison();
 
 //this class exists purely to determine which elements will be displayed
 //true means it's on by default, false means it is not
-Displayed = {
+let Displayed = {
         name: true,
         region : false,
         country : true,
@@ -210,7 +213,7 @@ function saveSettings() {
     //filter menu bar. 
     //because of the implementation of Display, the only way to clear the queue is to have it 
     //set the length of the queue to zero. so we will copy the queue. 
-    temp = TileList
+    let temp = TileList
     TileList = []
     displayList()
     //second call to display list is because the first one displays an empty list, then the 
@@ -312,10 +315,13 @@ async function checkWeather(City){
     //the current wind gust speed, in kilometers per hour
     tempLocation.gustKph = data.current.gust_kph
     //the current wind gust speed, in miles per hour
-    tempLocation.gustMph = data.current.gust_mph    
+    tempLocation.gustMph = data.current.gust_mph 
+    
+    console.log(tempLocation)
 
 
     //Having collected all of this information, return it.
+    //There is a queue reset here, that is just designed to make sure locations are not duplicated
     TileList.push(tempLocation)
     let temp = TileList
     TileList = [];
@@ -409,17 +415,18 @@ function displayList(){
         const newTile =document.createElement("div");
         //add the "LocationTile" Class to it. 
         newTile.classList.add("LocationTile");
-        for (attribute in TileList[i]){
+        console.log(TileList[i])
+        for (const attribute in TileList[i]){
             if(Displayed[attribute]){
                 //add an if-check to set the weather Icon. it will need to be added as an img element
                 //for each attribute, create a <p> element and add it to the <div> element
                 const newAttribute = document.createElement("p");
                 //'attribute' is the name of the attribute, TileList[i][attribute] is the value of it
                 //to make it look nicer, I am capitalizing the first letter of each attribute. 
-                text = attribute.charAt(0).toUpperCase() + attribute.slice(1) + " : " + TileList[i][attribute];
+                let text = attribute.charAt(0).toUpperCase() + attribute.slice(1) + " : " + TileList[i][attribute];
                 //In order to create new HTML and add it to the document, they have to first take the form
                 //of a node. That is created below 
-                newNode = document.createTextNode(text);
+                let newNode = document.createTextNode(text);
                 //add the 'attribute' class to it
                 newAttribute.classList.add("attribute");
                 //then append this new Node to the attribute that we created
@@ -458,22 +465,28 @@ function displayList(){
             //this adds a compare tile button with a class that is it's index in the list.
             
             let compareTileButton = document.createElement('BUTTON');
- 
+            //compateTileButton.classList
             let indexCompare = i
-            let comparePress = false
             compareTileButton.addEventListener("click", ()=>{
-                if(comparePress == false){
-                    compareTile = newTile
-                    console.log(newTile.temp_c)
-                    console.log(compareTile.temp_c)
-                    comparePress = true;
+                if(ComparisonZone.tile1.name === ""){
+                    //add this tile in the first slot. IndexCompare is derived from the position in the 
+                    //for loop above 
+
+                    //FIXME: add a way to change the color of the button after it is pressed to indicate that
+                    //the button has been pressed
+                    
+                    ComparisonZone.tile1 = TileList[indexCompare]
+                }
+                else if(ComparisonZone.tile1.name != ""){  //if there is a TIle in the first slot
+                    ComparisonZone.tile2 = TileList[indexCompare]
+                    console.log(ComparisonZone.tile1["temperatureC"])
+                    console.log(ComparisonZone.tile2["temperatureC"])
+                    ComparisonZone.tile1 = new Weather()
+                    ComparisonZone.tile2 = new Weather();
                     return
                 }
-                compareTile.temp_c -= newTile
-                console.log(compareTile.temp_c)
-                comparePress = false;
             })
-            compareTileButton.classList.add(i)
+            compareTileButton.classList.add(TileList[i][name])
             compareTileButton.setAttribute('id','compare-button');
             newTile.appendChild(compareTileButton);
             /////////////////////////////////////////////////////////////////////////////////////////
@@ -498,94 +511,3 @@ function displayList(){
         return;
 
     }
-
-class Weather{
-    //Each element in the constructor is a tuple, see. the first element is the data to be displayed. 
-    //the second is a boolean that denoted whether or not it should be displayed. 
-    constructor(){
-        this.name = "";
-        this.region = "";
-        this.country = "";
-        this.lat = 0.0;
-        this.lon = 0.0;
-        this.tz_id = "";
-        this.epochTime = 0;
-        this.localTime = "";
-        this.lastUpdatedEpoch = 0;
-        this.lastUpdatedLocalTime = "";
-        this.temperatureC = 0;
-        this.temperatureF = 0;
-        //look at this to determine whether it is day or not
-        this.isDay = 0;
-        // look at this to show a related weather Icon
-        this.condition = "";
-        this.conditionCode = 0;
-        this.windMPH = 0;
-        this.windKPH = 0;
-        this.windDegree = 0;
-        //look at this to determine whether its windy or nah
-        this.wind = 0;
-        this.windDirection = "";
-        this.pressureMb = 0;
-        this.pressureIn = 0;
-        this.precipMm = 0;
-        this.precipIn = 0;
-        this.humidity = 0;
-        //this can be used to determine if it is cloudy or not
-        this.cloud = 0;
-        this.feelsLikeC = 0;
-        this.feelsLikeF= 0;
-        this.visibilityKM = 0;
-        //this attribute seems bugged out. it usually displays as undefined
-        this.visibilityMi = 0;
-        this.UV = 0;
-        this.gustMph = 0;
-        this.gustKph = 0;
-        this.weatherImage = "";
-    }
-    /**
-     * THIS IS NOT CODE, THIS IS THE OUTPUT FROM A TEST RUN OF POLLING THE DATABASE, FORMATTED. 
-     * I USED THIS AS A BASE FOR DETERMINING WHAT THE ATTRIBUTES WERE TO BE IN THE CLASS AND 
-     * THE SETTERS IN checkWeather()
-     * 
-     * {"location":{
-     *     "name":"Hays",
-     *     "region":"Kansas",
-     *     "country":"USA",
-     *     "lat":38.88,
-     *     "lon":-99.32,
-     *     "tz_id":"America/Chicago",
-     *     "localtime_epoch":1696188977,
-     *     "localtime":"2023-10-01 14:36"
-     * }
-     * "current":{
-     *     "last_updated_epoch":1696188600,
-     *     "last_updated":"2023-10-01 14:30",
-     *     "temp_c":30.0,
-     *     "temp_f":86.0,
-     *     "is_day":1,
-     *     "condition":{
-     *         "text":"Sunny",
-     *         "icon":"//cdn.weatherapi.com/weather/64x64/day/113.png",
-     *         "code":1000
-     *     },
-     *     "wind_mph":26.6,
-     *     "wind_kph":42.8,
-     *     "wind_degree":180,
-     *     "wind_dir":"S",
-     *     "pressure_mb":1018.0,
-     *     "pressure_in":30.07,
-     *     "precip_mm":0.0,
-     *     "precip_in":0.0,
-     *     "humidity":36,
-     *     "cloud":0,
-     *     "feelslike_c":28.8,
-     *     "feelslike_f":83.8,
-     *     "vis_km":16.0,
-     *     "vis_miles":9.0,
-     *     "uv":8.0,
-     *     "gust_mph":26.0,
-     *     "gust_kph":41.8}}
-     */
-
-}
