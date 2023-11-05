@@ -54,7 +54,6 @@ export class Comparison{
         compareTile.classList.add("TrueCompare");
         for (const attribute in this.comparedTiles){
             if(this.comparedTiles[attribute] == "NoShow"){
-                console.log("No Fuck You Im not Printing")
                 continue;
             }
                 //add an if-check to set the weather Icon. it will need to be added as an img element
