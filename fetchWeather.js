@@ -97,7 +97,6 @@ let Displayed = {
         //weatherImage is the picture based on the current 'condition'
         weatherImage : false,
         setAll(){
-            console.log("setting all")
             this.name = true;
             this.region = true;
             this.country = true;
@@ -135,7 +134,6 @@ let Displayed = {
             updateColor();
     },
     unsetAll(){
-        console.log("setting all")
         this.name = false;
         this.region = false;
         this.country = false;
@@ -178,7 +176,6 @@ let elementsArray = document.querySelectorAll("#filterForm button");
 elementsArray.forEach(function(elem) {
     elem.style.color = "red";
     elem.addEventListener("click", () => {
-        console.log(`${elem.id}'s color: ${elem.style.color}`)
         Displayed[elem.id] = !Displayed[elem.id]
         if (elem.style.color == "red"){
             elem.style.color = "blue";
@@ -317,7 +314,6 @@ async function checkWeather(City){
     //the current wind gust speed, in miles per hour
     tempLocation.gustMph = data.current.gust_mph 
     
-    console.log(tempLocation)
 
 
     //Having collected all of this information, return it.
@@ -356,6 +352,7 @@ clearButton.addEventListener("click", ()=>{
     displayList();
     //also remember to clear out the error message if th euser has entered too many locations
     errorMessage.innerHTML = null;
+    //delete the current comparison.
 })
 
 //This method shows/hides the criteria filter menu
@@ -382,9 +379,7 @@ filterButton.addEventListener("click", ()=>{
       }
 })
 
-function setValues(input){
-    console.log(input)
-}
+
 /*displayList will display the current TileList. 
 NOTICE: AT THE VERY BEGINNING OF THIS METHOD, IT CHECKS THE SIZE OF TILELIST.
 IF IT IS 0, IT WILL AUTOMATICALLY DELETE ALL THE TIMES IN THE QUEUE WHEN IT IS 
@@ -415,7 +410,6 @@ function displayList(){
         const newTile =document.createElement("div");
         //add the "LocationTile" Class to it. 
         newTile.classList.add("LocationTile");
-        console.log(TileList[i])
         for (const attribute in TileList[i]){
             if(Displayed[attribute]){
                 //add an if-check to set the weather Icon. it will need to be added as an img element
@@ -461,27 +455,28 @@ function displayList(){
             // appending button to div
             newTile.appendChild(clearTileButton);
 
+
+
+
             ////////////////////////////////////////////////////////////////////////////////////////
             //this adds a compare tile button with a class that is it's index in the list.
-            
             let compareTileButton = document.createElement('BUTTON');
             //compateTileButton.classList
             let indexCompare = i
             compareTileButton.addEventListener("click", ()=>{
-                if(ComparisonZone.tile1.name === ""){
+                if(ComparisonZone.tile1.name == ""){
                     //add this tile in the first slot. IndexCompare is derived from the position in the 
                     //for loop above 
 
                     //FIXME: add a way to change the color of the button after it is pressed to indicate that
                     //the button has been pressed
-                    
                     ComparisonZone.tile1 = TileList[indexCompare]
+                    ComparisonZone.updateAndDisplay();
                 }
                 else if(ComparisonZone.tile1.name != ""){  //if there is a TIle in the first slot
                     ComparisonZone.tile2 = TileList[indexCompare]
-                    console.log(ComparisonZone.tile1["temperatureC"])
-                    console.log(ComparisonZone.tile2["temperatureC"])
-                    ComparisonZone.tile1 = new Weather()
+                    ComparisonZone.updateAndDisplay();
+                    ComparisonZone.tile1 = new Weather();
                     ComparisonZone.tile2 = new Weather();
                     return
                 }

@@ -1,16 +1,127 @@
+const comparisonZone = document.getElementById("comparison-zone");
 export class Comparison{
     constructor(){
         this.tile1 = new Weather();
         this.tile2 = new Weather();
         this.comparedTiles = new Weather();
-    function Compare(){
+    this.Compare = ()=>{
         //for now, just concat the strings with a space
         for (attribute in this.tile1){
-            comparedTiles[attribute] = this.tile1[attribute] + this.tile2[attribute]
+            comparedTiles[attribute] = this.tile1[attribute] - this.tile2[attribute]
         }
     }
+    this.updateAndDisplay = ()=>{
+
+        const newTile = document.createElement("div");
+        newTile.classList.add("LocationTile");
+        const newAttribute = document.createElement("p");
+        let text = ""
+        if(this.tile1.name != ""){
+            text = this.tile1.name.charAt(0).toUpperCase() + this.tile1.name.slice(1) + " : " + this.tile1.name;
+        }
+        let newNode = document.createTextNode(text);
+        newAttribute.classList.add("attribute");
+        newAttribute.appendChild(newNode)
+        newTile.appendChild(newAttribute)
+        comparisonZone.append(newTile)
+
+
+
+        const newTile2 =document.createElement("div"); 
+        newTile2.classList.add("LocationTile");
+        const newAttribute2 = document.createElement("p");
+        text = ""
+        if(this.tile2.name != ""){
+            text = this.tile2.name.charAt(0).toUpperCase() + this.tile2.name.slice(1) + " : " + this.tile2.name;
+        }
+        newNode = document.createTextNode(text);
+        newAttribute2.classList.add("attribute");
+        newAttribute2.appendChild(newNode)
+        newTile2.appendChild(newAttribute2)
+        comparisonZone.append(newTile2)
+
+
+        if(comparisonZone.children.length > 2){
+            for (const attribute in this.comparedTiles){
+                this.comparedTiles = this.spliceAttributes(this.tile1, this.tile2)
+            }
+            this.tile1 = new Weather();
+            this.tile2 = new Weather();
+            while(comparisonZone.hasChildNodes()){
+                comparisonZone.removeChild(comparisonZone.firstChild);
+            }
+        const compareTile = document.createElement("div");
+        compareTile.classList.add("TrueCompare");
+        for (const attribute in this.comparedTiles){
+            if(this.comparedTiles[attribute] == "NoShow"){
+                console.log("No Fuck You Im not Printing")
+                continue;
+            }
+                //add an if-check to set the weather Icon. it will need to be added as an img element
+                //for each attribute, create a <p> element and add it to the <div> element
+                let comparedAttribute = document.createElement("p");
+                //'attribute' is the name of the attribute, TileList[i][attribute] is the value of it
+                //to make it look nicer, I am capitalizing the first letter of each attribute. 
+                let text = attribute.charAt(0).toUpperCase() + attribute.slice(1) + " : " + this.comparedTiles[attribute];
+                //In order to create new HTML and add it to the document, they have to first take the form
+                //of a node. That is created below 
+                let newNode = document.createTextNode(text);
+                //add the 'attribute' class to it
+                comparedAttribute.classList.add("compareAttribute");
+                //then append this new Node to the attribute that we created
+                comparedAttribute.appendChild(newNode)
+                //then append that new attribute Element up to the created Tile
+                compareTile.appendChild(comparedAttribute)
+            }
+        comparisonZone.style.clear = "both";
+        comparisonZone.append(compareTile)
+        }
+    }
+
+    this.spliceAttributes = (tile1, tile2) =>{
+        let temp = new Weather();
+        temp.name = tile1.name + " :: " + tile2.name;
+        temp.region = tile1.region + " :: " + tile2.region;
+        temp.country = tile1.country + " :: " + tile2.country;
+        temp.lat = tile1.lat - tile2.lat;
+        temp.lon = tile1.lon - tile2.lon;
+        temp.tz_id = "NoShow";
+        temp.epochTime = "NoShow"
+        temp.localTime = tile1.localTime + " :: " + tile2.localTime;
+        temp.lastUpdatedEpoch = "NoShow";
+        temp.lastUpdatedLocalTime = "NoShow";
+        temp.temperatureC = tile1.temperatureC - tile2.temperatureC;
+        temp.temperatureF = tile1.temperatureF - tile2.temperatureF;
+        temp.isDay = tile1.isDay + " :: " + tile2.isDay;
+        temp.condition = tile1.condition + " :: " + tile2.condition;
+        temp.conditionCode = "NoShow";
+        temp.windMPH = tile1.windMPH - tile2.windMPH;
+        temp.windKPH = tile1.windKPH - tile2.windKPH;
+        temp.windDegree = tile1.windDegree - tile2.windDegree;
+        temp.wind = "NoShow";
+        temp.windDirection = tile1.windDirection + " :: " + tile2.windDirection;
+        temp.pressureMb = tile1.pressureMb - tile2.pressureMb;
+        temp.pressureIn = tile1.pressureIn - tile2.pressureIn;
+        temp.precipMm = tile1.precipMm - tile2.precipMm;
+        temp.precipIn = tile1.precipIn - tile2.precipIn;
+        temp.humidity = tile1.humidity - tile2.humidity;
+        temp.cloud = "NoShow";
+        temp.feelsLikeC = tile1.feelsLikeC = tile2.feelsLikeC;
+        temp.feelsLikeF= tile1.feelsLikeF - tile2.feelsLikeF;
+        temp.visibilityKM = tile1.visibilityKM - tile2.visibilityKM;
+        temp.visibilityMi = tile1.visibilityMi - tile2.visibilityMi;
+        temp.UV = tile1.UV - tile2. UV;
+        temp.gustMph = tile1.gustMph - tile2.gustMph;
+        temp.gustKph = tile1.gustKph - tile2.gustKph;
+        temp.weatherImage = "NoShow";
+        return temp;
+    }
+
+
+    }
+
 }
-}
+
 
 export class Weather{
     //Each element in the constructor is a tuple, see. the first element is the data to be displayed. 
