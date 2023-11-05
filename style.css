@@ -209,4 +209,13 @@ input[type="text"] {
     margin:0px
 }
 
-.ComparisonZoneClear{}
+.ComparisonZoneClear{
+    color: blue;
+}
+
+.luckyButton{
+    width: 30px;
+    height: 30px;
+    background-image: url(images/crucial.gif);
+    background-size: 30px 30px;
+}

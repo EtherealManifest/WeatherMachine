@@ -17,6 +17,7 @@ const filterButton = document.querySelector(".filter-er")
 const filterForm = document.querySelector(".filterForm")
 //the error message(if relevant)
 const errorMessage = document.querySelector(".error-message")
+const luckyButton = document.querySelector(".luckyButton")
 /* searchKey can either be a zip code or City, State*/
 /*This is where the Settings can be defined as variables*/
 const nameEnabler = document.getElementById("name");
@@ -341,6 +342,24 @@ searchButton.addEventListener("click", ()=>{
         checkWeather(searchBox.value)
     }
 })
+luckyButton.addEventListener("click", ()=> {
+    if(TileList.length == 10){
+        errorMessage.innerHTML = "Too Many Locations! Please Clear a Location Before Adding Another."
+    }
+    else{
+        console.log("Clever!")
+        errorMessage.innerHTML = null;
+        checkWeather((getRndInteger(-90, 90), getRndInteger(-180, 180)))
+    }
+    
+})
+
+//used Above
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+  }
+
+
 //Display list has a check at the beginning of it that examines the current size of TileList
 //If it is empty, it will remove locations from the queue until it is empty. 
 //This listener is bound to the button that reads: "Cast them into the Fire"
