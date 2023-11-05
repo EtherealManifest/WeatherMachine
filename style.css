@@ -214,8 +214,9 @@ input[type="text"] {
 }
 
 .luckyButton{
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
+    clear:both;
     background-image: url(images/LUCKY!.png);
     background-size: 30px 30px;
 }
