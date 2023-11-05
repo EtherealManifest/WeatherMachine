@@ -440,7 +440,7 @@ function displayList(){
                 if(TileList.length == 1){
                     TileList = [];
                     displayList();
-                    return
+                    returnw
                 }
                 TileList.splice(index, 1)
                 let temp = TileList

@@ -12,9 +12,9 @@ export class Comparison{
     }
     this.updateAndDisplay = ()=>{
 
-        const newTile = document.createElement("div");
+        let newTile = document.createElement("div");
         newTile.classList.add("LocationTile");
-        const newAttribute = document.createElement("p");
+        let newAttribute = document.createElement("p");
         let text = ""
         if(this.tile1.name != ""){
             text = this.tile1.name.charAt(0).toUpperCase() + this.tile1.name.slice(1) + " : " + this.tile1.name;
@@ -27,9 +27,9 @@ export class Comparison{
 
 
 
-        const newTile2 =document.createElement("div"); 
+        let newTile2 =document.createElement("div"); 
         newTile2.classList.add("LocationTile");
-        const newAttribute2 = document.createElement("p");
+        let newAttribute2 = document.createElement("p");
         text = ""
         if(this.tile2.name != ""){
             text = this.tile2.name.charAt(0).toUpperCase() + this.tile2.name.slice(1) + " : " + this.tile2.name;
@@ -50,7 +50,7 @@ export class Comparison{
             while(comparisonZone.hasChildNodes()){
                 comparisonZone.removeChild(comparisonZone.firstChild);
             }
-        const compareTile = document.createElement("div");
+        let compareTile = document.createElement("div");
         compareTile.classList.add("TrueCompare");
         for (const attribute in this.comparedTiles){
             if(this.comparedTiles[attribute] == "NoShow"){
@@ -72,6 +72,20 @@ export class Comparison{
                 //then append that new attribute Element up to the created Tile
                 compareTile.appendChild(comparedAttribute)
             }
+            let clearTileButton = document.createElement('BUTTON');
+            clearTileButton.addEventListener("click", ()=>{
+                this.tile1 = new Weather();
+                this.tile2 = new Weather();
+                while(comparisonZone.hasChildNodes()){
+                    comparisonZone.removeChild(comparisonZone.firstChild);
+                }
+                console.log(this)
+            })
+            clearTileButton.classList.add("COmparisonZoneClear")
+            //FIXME: CHANGE THIS TO A PICTURE 
+            clearTileButton.setAttribute('id','delete-button');
+            // appending button to div
+            compareTile.appendChild(clearTileButton);
         comparisonZone.style.clear = "both";
         comparisonZone.append(compareTile)
         }
