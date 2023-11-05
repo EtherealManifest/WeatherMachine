@@ -52,6 +52,10 @@ export class Comparison{
             }
         let compareTile = document.createElement("div");
         compareTile.classList.add("TrueCompare");
+        let label = document.createElement("p");
+        let labelText = document.createTextNode("COMPARISON BETWEEN THESE TWO LOCATIONS");
+        label.appendChild(labelText)
+        compareTile.appendChild(label)
         for (const attribute in this.comparedTiles){
             if(this.comparedTiles[attribute] == "NoShow"){
                 continue;
