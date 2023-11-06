@@ -11,7 +11,6 @@ export class Comparison{
         }
     }
     this.updateAndDisplay = ()=>{
-
         let newTile = document.createElement("div");
         newTile.classList.add("LocationTile");
         let newAttribute = document.createElement("p");

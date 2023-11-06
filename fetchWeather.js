@@ -256,9 +256,9 @@ async function checkWeather(City){
     //Tce country
     tempLocation.country = data.location.country;
     //The Latitude of this Location
-    tempLocation.lat = data.location.lat;
+    tempLocation.lat = data.location.lat.toFixed(2);
     //the Longitude of this Location
-    tempLocation.lon = data.location.lon;
+    tempLocation.lon = data.location.lon.toFixed(2);
     //The Time Zone ID
     tempLocation.tz_id = data.location.tz_id;
     //THe Local time in seconds epoch
@@ -270,9 +270,9 @@ async function checkWeather(City){
     //the time th eweather for this location was last updated, in dateTime (YYYY/MM/DD HH:MM)
     tempLocation.lastUpdatedLocalTime = data.current.last_updated
     //The current temperature, in degrees celsius
-    tempLocation.temperatureC = data.current.temp_c
+    tempLocation.temperatureC = data.current.temp_c.toFixed(2)
     //the current temperature, in degrees fahrenheit
-    tempLocation.temperatureF = data.current.temp_f
+    tempLocation.temperatureF = data.current.temp_f.toFixed(2)
     //the current day status. 1 = yes, 0 = no
     tempLocation.isDay = data.current.is_day
     //the conditions for this location. this is a descriptive text 
@@ -281,9 +281,9 @@ async function checkWeather(City){
     //the condition code. also unpredictable. 
     tempLocation.conditionCode = data.current.condition.code
     //the current average wind speed, in miles per hour
-    tempLocation.windMPH = data.current.wind_mph
+    tempLocation.windMPH = data.current.wind_mph.toFixed(2)
     //the current average wind speed, in kilometers per hour
-    tempLocation.windKPH = data.current.wind_kph
+    tempLocation.windKPH = data.current.wind_kph.toFixed(2)
     //the degree direction that the wind is blowing
     tempLocation.windDegree = data.current.wind_degree
     //the cardinal direction associated with the wind direction
@@ -301,19 +301,19 @@ async function checkWeather(City){
     //the current clody status?
     tempLocation.cloud = data.current.cloud
     //what temperature it feels like, in degrees celsius
-    tempLocation.feelsLikeC = data.current.feelslike_c
+    tempLocation.feelsLikeC = data.current.feelslike_c.toFixed(2)
     //what temperature it feels like, in degrees fahrenheit
-    tempLocation.feelsLikeF = data.current.feelslike_f
+    tempLocation.feelsLikeF = data.current.feelslike_f.toFixed(2)
     //the current visibility, in kilometers
-    tempLocation.visibilityKM = data.current.vis_km
+    tempLocation.visibilityKM = data.current.vis_km.toFixed(2)
     //the current visibility, in miles
-    tempLocation.visibilityMi = data.current.vis_mi
+    tempLocation.visibilityMi = (data.current.vis_km * 0.62).toFixed(2)
     //the UV index, on a scale of 1-10
     tempLocation.UV = data.current.uv
     //the current wind gust speed, in kilometers per hour
-    tempLocation.gustKph = data.current.gust_kph
+    tempLocation.gustKph = data.current.gust_kph.toFixed(2)
     //the current wind gust speed, in miles per hour
-    tempLocation.gustMph = data.current.gust_mph 
+    tempLocation.gustMph = data.current.gust_mph.toFixed(2)
     
 
 
@@ -350,9 +350,9 @@ luckyButton.addEventListener("click", ()=> {
         console.log("Clever!")
         errorMessage.innerHTML = null;
         checkWeather((getRndInteger(-90, 90), getRndInteger(-180, 180)))
+        }
     }
-    
-})
+)
 
 //used Above
 function getRndInteger(min, max) {
@@ -431,6 +431,9 @@ function displayList(){
         newTile.classList.add("LocationTile");
         for (const attribute in TileList[i]){
             if(Displayed[attribute]){
+                if(attribute = "condition"){
+                    //set the attribute to an image property and then append it instead
+                }
                 //add an if-check to set the weather Icon. it will need to be added as an img element
                 //for each attribute, create a <p> element and add it to the <div> element
                 const newAttribute = document.createElement("p");
@@ -469,14 +472,9 @@ function displayList(){
                 displayList();
             })
             clearTileButton.classList.add(i)
-            //FIXME: CHANGE THIS TO A PICTURE 
             clearTileButton.setAttribute('id','delete-button');
             // appending button to div
             newTile.appendChild(clearTileButton);
-
-
-
-
             ////////////////////////////////////////////////////////////////////////////////////////
             //this adds a compare tile button with a class that is it's index in the list.
             let compareTileButton = document.createElement('BUTTON');
