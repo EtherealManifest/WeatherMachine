@@ -10,7 +10,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif
     font-size: 30px;
     font-weight: bold;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 .projectDescription{
@@ -141,6 +141,17 @@ input[type="text"] {
     
 }
 
+button{
+    border-radius: 10px;
+    background-color: lightgray;
+    color: steelblue;
+    border-color: steelblue;
+    border-width: 2px;
+}
+.filter-er:hover{
+    border-width: 3px;
+    background-color: rgb(174, 173, 173);
+}
 #EnableAll{
     display:none;
 }
@@ -219,4 +230,35 @@ input[type="text"] {
     clear:both;
     background-image: url(images/LUCKY!.png);
     background-size: 30px 30px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+nav{
+    text-align: center;
+    color: white;
+    font-family:'Calibri', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+    outline: 2px solid steelblue;
+    background-color:lightgray;
+}
+
+a:link{
+    color: steelblue;
+}
+a:visited{
+    color:steelblue;
+}
+a:hover{
+    color: snow;
 }

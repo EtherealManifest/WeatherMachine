@@ -54,9 +54,6 @@ const gustKphEnabler = document.getElementById("gustKPH");
 const enableAllButton = document.getElementById("EnableAll")
 const disableAllButton = document.getElementById("DisableAll")
 
-
-let comparePress = "false"
-let compareTile
 let ComparisonZone = new Comparison();
 
 //this class exists purely to determine which elements will be displayed
@@ -207,7 +204,7 @@ disableAllButton.addEventListener("click", ()=>{
 
 //This was previously an event listener, but I 
 function saveSettings() {
-    //basically, just delete and redisplay the lis, as well as closing the 
+    //basically, just delete and redisplay the list, as well as closing the 
     //filter menu bar. 
     //because of the implementation of Display, the only way to clear the queue is to have it 
     //set the length of the queue to zero. so we will copy the queue. 
@@ -245,10 +242,8 @@ async function checkWeather(City){
     catch(error){
         console.log(`${error.name}! ${error.message}`)
         errorMessage.innerHTML = ("Request cannot be processed")
-        return
     }
        
- 
     //The name of the location
     tempLocation.name = data.location.name;
     //The region (In the US, this is the state)
@@ -342,14 +337,16 @@ searchButton.addEventListener("click", ()=>{
         checkWeather(searchBox.value)
     }
 })
+
+/*
 luckyButton.addEventListener("click", ()=> {
     if(TileList.length == 10){
         errorMessage.innerHTML = "Too Many Locations! Please Clear a Location Before Adding Another."
     }
     else{
-        console.log("Clever!")
         errorMessage.innerHTML = null;
-        checkWeather((getRndInteger(-90, 90), getRndInteger(-180, 180)))
+        let temp = checkWeather((getRndInteger(-90, 90), getRndInteger(-180, 180)))
+        console.log(temp)
         }
     }
 )
@@ -358,7 +355,7 @@ luckyButton.addEventListener("click", ()=> {
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
   }
-
+*/
 
 //Display list has a check at the beginning of it that examines the current size of TileList
 //If it is empty, it will remove locations from the queue until it is empty. 
@@ -431,9 +428,6 @@ function displayList(){
         newTile.classList.add("LocationTile");
         for (const attribute in TileList[i]){
             if(Displayed[attribute]){
-                if(attribute = "condition"){
-                    //set the attribute to an image property and then append it instead
-                }
                 //add an if-check to set the weather Icon. it will need to be added as an img element
                 //for each attribute, create a <p> element and add it to the <div> element
                 const newAttribute = document.createElement("p");
