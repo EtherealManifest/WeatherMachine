@@ -82,14 +82,12 @@ export class Comparison{
                 while(comparisonZone.hasChildNodes()){
                     comparisonZone.removeChild(comparisonZone.firstChild);
                 }
-                console.log(this)
             })
-            clearTileButton.classList.add("COmparisonZoneClear")
-            //FIXME: CHANGE THIS TO A PICTURE 
+            clearTileButton.classList.add("ComparisonZoneClear")
+            //FIXME: CHANGE THIS TO A PICTURE w
             clearTileButton.setAttribute('id','delete-button');
             // appending button to div
             compareTile.appendChild(clearTileButton);
-        comparisonZone.style.clear = "both";
         comparisonZone.append(compareTile)
         }
     }

@@ -1,13 +1,48 @@
 
 .LocationTile{
-width: 200px;
-display: inline-block;
-font-family: Verdana, Geneva, Tahoma, sans-serif
+    border-style: groove;
+    border-width: 4px;
+    border-color: cornflowerblue;
+    padding:10px;
+    background-image: linear-gradient(lightblue, rgb(72, 130, 154));
+    float: left;
+    margin-top: 10px;
+    border-radius: 10px;
+    transition: .1s;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align:center;
+    font-size: 10px;
+    width:auto;
+}
+.LocationTile:hover{
+    max-width: 100%;
+    width: auto;
+    transition: .3s ease-out;
+    border-width: 5px;
+    font-size: 15px;
+    white-space: nowrap;
+}
+.LocationTile:hover > #delete-button{
+    position:sticky;
+    Justify-content: center;
+    bottom:0;
+}
+.LocationTile:hover > #compare-button{
+    position:sticky;
+    justify-content: center;
+    bottom:0;
 }
 
+@font-face {
+    font-family: myFirstFont;
+    src: url(fonts/Windlass.ttf);
+ }
 .projectTitle{
     text-align: center;
-    font-size: 30px;
+    font-family: myFirstFont;
+    font-size: 50px;
+    color: rgb(56, 93, 123);
+    background-image: linear-gradient(cornflowerblue, snow);
     font-weight: bold;
     padding-top: 20px;
     padding-bottom: 15px;
@@ -28,6 +63,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif
 
 body{
     background-color: rgb(118, 214, 255);
+    margin: 0px;
 }
 .city{
     border-width: 10px;
@@ -98,15 +134,6 @@ input[type="text"] {
     border-width: 1px;
 }
 
-.LocationTile{
-    border-style: groove;
-    border-width: 4px;
-    border-color: cornflowerblue;
-    background-image: linear-gradient(lightblue, rgb(72, 130, 154));
-    float: center;
-    margin-top: 10px;
-    border-radius: 10px;
-}
 
 .attribute{
     border-style: solid;
@@ -123,34 +150,33 @@ input[type="text"] {
 }
 
 #queue{
-    border-style:solid;
-    border-color:silver;
-    border-width: 5px;
+    float: center;
 }
 .error-message{
     text-align: center;
     margin: -2px, -2px, -2px, -2px;
     padding: 0px, 0px, 0px, 0px
 }
-
+.filter-er{
+    justify-content:center;
+    margin-left: 45%; 
+}
 #filterForm{
     display: none;
     z-index: 99;
     position: absolute;
-    background-image: linear-gradient(white, silver);
+    background-image: linear-gradient(white, snow);
     
 }
-
 button{
     border-radius: 10px;
     background-color: lightgray;
-    color: steelblue;
-    border-color: steelblue;
+    color: cornflowerblue;
+    border-color: cornflowerblue;
     border-width: 2px;
 }
 .filter-er:hover{
     border-width: 3px;
-    background-color: rgb(174, 173, 173);
 }
 #EnableAll{
     display:none;
@@ -163,11 +189,12 @@ button{
 #delete-button{
     width: 25px;
     height:25px;
-    background-color:steelblue;
+    background-color:cornflowerblue;
     background-image:url(images/delete_closed.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 75%;
+    position: sticky;
     
 }
 #delete-button:hover{
@@ -194,16 +221,21 @@ button{
 #compare-button{
     width: 25px;
     height:25px;
-    background-color:steelblue;
+    background-color:cornflowerblue;
     background-image:url(images/compare.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 75%;
 }
+#compare-button:hover{
+    transition: .5s;
+    width: 27px;
+    height:27px;
+    background-image:url(images/compare-2.png)
+}
 
 .TrueCompare{
-    float: center;
-    min-width: 200px;
+    width: 50%;
     border-style: groove;
     border-width: 4px;
     border-color: cornflowerblue;
@@ -211,6 +243,11 @@ button{
     float: center;
     margin-top: 10px;
     border-radius: 10px;
+}
+.TrueCompare > #delete-button{
+    margin-left: 45%;
+    padding-left: 40px;
+    padding-right:40px;
 }
 
 .compareAttribute{
@@ -220,9 +257,6 @@ button{
     margin:0px
 }
 
-.ComparisonZoneClear{
-    color: blue;
-}
 
 .luckyButton{
     width: 32px;
@@ -245,19 +279,19 @@ li{
 
 nav{
     text-align: center;
-    color: white;
+    color: snow;
     font-family:'Calibri', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 10px;
     padding-bottom: 3px;
-    outline: 2px solid steelblue;
-    background-color:lightgray;
+    outline: 1px solid cornflowerblue;
+    background-color:snow
 }
 
 a:link{
-    color: steelblue;
+    color: cornflowerblue;
 }
 a:visited{
-    color:steelblue;
+    color:cornflowerblue;
 }
 a:hover{
     color: snow;
