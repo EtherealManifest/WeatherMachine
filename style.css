@@ -1,3 +1,9 @@
+#queue{
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically (optional) */
+    flex-wrap: wrap; /* Allow tiles to wrap to new line if needed */
+}
 
 .LocationTile {
     display: inline-block;
@@ -7,18 +13,16 @@
     padding: 10px;
     background-image: linear-gradient(lightblue, rgb(72, 130, 154));
     margin-top: 10px;
-    border-radius: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     font-size: 10px;
-    white-space: nowrap; /* Prevent text wrapping */
-    transition: border-width 0.3s ease-out, font-size 0.3s ease-out; /* Smooth transition for specific properties */
+    transition: border-width 0.2s ease-out, font-size 0.2s ease-out; /* Smooth transition for specific properties */
 }
 
 .LocationTile:hover {
     border-width: 5px;
-    font-size: 15px;
-    /* Other hover effects */
+    font-size: 12px;
+    white-space: nowrap;
 }
 .LocationTile:hover > #delete-button{
     position:sticky;
@@ -147,9 +151,7 @@ input[type="text"] {
     border-radius: 4px
 }
 
-#queue{
-    float: center;
-}
+
 .error-message{
     text-align: center;
     margin: -2px, -2px, -2px, -2px;
