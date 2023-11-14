@@ -11,7 +11,7 @@
     border-width: 4px;
     border-color: cornflowerblue;
     padding: 10px;
-    background-image: linear-gradient(lightblue, rgb(72, 130, 154));
+    background-image: linear-gradient(rgb(51, 113, 230), rgb(134, 171, 241));
     margin-top: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
@@ -60,7 +60,7 @@
 	height: 100%;
 	min-height: 120vh;
 	width: 100%;
-	background-image: linear-gradient(white, rgb(118, 214, 255));
+	background-image: linear-gradient(snow, cornflowerblue);
 }
 
 body{
@@ -84,6 +84,7 @@ input[type="text"] {
     width: 200px;
     padding: 10px;
     margin-left: 575px;
+    border-radius: 20px;
 }
 
 .searchButton{
@@ -91,6 +92,9 @@ input[type="text"] {
     height: 30px;
     background-image: url(images/search.png);
     background-size: 30px 30px;
+}
+.searchButton:hover{
+    border-width: 99px;
 }
 
 .clear-er{
@@ -162,11 +166,19 @@ input[type="text"] {
     margin-left: 45%; 
 }
 #filterForm{
+    margin-left: 25%;
+    max-width: 50%;
     display: none;
     z-index: 99;
     position: absolute;
-    background-image: linear-gradient(white, snow);
+    border-style:inset;
+    border-width:3px;
+    border-color: cornflowerblue;
+    background-image: linear-gradient(cornflowerblue, lightblue, cornflowerblue);
     
+}
+#filterform > button{
+    background-color: black;
 }
 button{
     border-radius: 10px;
@@ -235,26 +247,28 @@ button{
 }
 
 .TrueCompare{
+    margin-left: 25%;
     width: 50%;
     border-style: groove;
-    border-width: 4px;
+    border-width: 3px;
     border-color: cornflowerblue;
-    background-image: linear-gradient(lightblue, deepskyblue);
-    float: center;
-    margin-top: 10px;
+    background-image: linear-gradient(rgb(51, 113, 230), rgb(134, 171, 241));
+    float: left;
+    padding:0%;
     border-radius: 10px;
 }
 .TrueCompare > #delete-button{
     margin-left: 45%;
     padding-left: 40px;
     padding-right:40px;
+    background-color: firebrick;
 }
 
 .compareAttribute{
     text-align: center;
     font-weight: bold;
     padding: 0px;
-    margin:0px
+    margin:0px;
 }
 
 
