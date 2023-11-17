@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Machine</title>
     <link rel="shortcut icon" href="/images/Sun.png"/>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="classic.css">  -->
+    <!-- styls.css -->
+    <link id ="theme-style" rel="stylesheet" href="classic.css">
     <script type = "module" src="fetchWeather.js"></script>
 </head>
 <div id="wrapper">
@@ -27,6 +29,27 @@
 </header>
 
 <body>
+    <!-- Hamburger Icon (Menu)-->
+    <div class="hamburger" onclick="toggleMenu()">
+        ☰
+    </div>
+    <div class="menu">
+        <div class="menu-header">
+            Menu
+            <span class="close-btn" onclick="toggleMenu()">X</span>
+        </div>
+        <ul>
+            <li>Features</li>
+            <li>Settings</li>
+            <li>Glossary</li>
+            <li onclick="toggleCursor()">Toggle Custom Cursor</li>
+            <li onclick="toggleTheme()">Toggle Theme</li>
+
+        </ul>
+    </div>
+    <script src="Menu.js"></script>
+
+    <!-- Search Bar -->
     <div class="card">
         <div id = "filter">
             

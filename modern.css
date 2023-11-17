@@ -1,0 +1,452 @@
+/* This is my implementation of a "modern" theme along with trying to 
+keep everything organizied/grouped and I commented out our legacy code*/
+
+/* Base Styles */
+/* body{
+    background-color: rgb(118, 214, 255);
+} */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9f4fb;
+}
+
+/* #wrapper
+{
+	height: 100%;
+	min-height: 120vh;
+	width: 100%;
+	background-image: linear-gradient(white, rgb(118, 214, 255));
+} */
+#wrapper {
+    min-height: 100vh;
+    background-color: #e9f4fb;
+}
+
+header {
+    text-align: center;
+    background-color: #5dade2;
+    color: white;
+    padding: 20px 0;
+}
+
+
+
+/* Search Styles */
+.search{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    justify-content: space-between;
+    /* margin-right: 575px; */
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    /* width: 200px; */
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-right: 10px;
+    /* margin-left: 575px; */
+    border: 1px solid #d6d6d6;
+}
+
+
+
+/* Button Styles */
+.github-button {
+    position: fixed;
+    top: 20px;
+    right: 20px; /* or use left: 20px; for top left */
+    background-color: #5dade2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.github-button:hover {
+    background-color: #4d8ac7;
+}
+
+/* #EnableAll{
+    display:none;
+}
+
+#DisableAll{
+    display:none;
+} */
+
+#EnableAll, #DisableAll {
+    background-color: #5dade2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#EnableAll:hover, #DisableAll:hover {
+    background-color: #4d8ac7;
+}
+  
+#EnableAll:active, #DisableAll:active {
+    background-color: #4a77b6;
+}
+
+.searchButton {
+    width: 30px;
+    height: 30px;
+    background-image: url(images/search.png);
+    /* background-size: 30px 30px; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-color: #5dade2;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.searchButton:hover {
+    background-color: #4d8ac7;
+}
+
+
+
+/* Tile Styles */
+.LocationTile { /* There's two locationtile? */
+    width: 200px;
+    display: inline-block;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    border-style: groove;
+    border-width: 4px;
+    border-color: cornflowerblue;
+    background-image: linear-gradient(lightblue, rgb(72, 130, 154));
+    float: center; /* float? forgot why I have it set like this*/
+    margin-top: 10px;
+
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #d6d6d6;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transofmr 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* transform? */
+}
+.LocationTile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.LocationTile h3 {
+    font-size: 24px;
+    margin: 0 0 10px 0;
+}
+
+.LocationTile p {
+    font-size: 16px;
+    margin: 0;
+    color: #000000;
+}
+
+/* Grid layout for tiles */
+/* #tiles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+} */
+
+
+
+/* Menu Styles */
+.hamburger {
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: -300px; /* initial position off screen */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    overflow-y: auto;
+    transition: left 0.3s;
+}
+
+.menu-header {
+    background-color: #f4f4f4;
+    padding: 10px;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-btn {
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #f4f4f4;
+}
+
+
+
+/* Other Styles */
+.clear-er {
+    display: block;
+    margin: 0 auto;
+    /* margin-top: -5px; */
+    background-color: #ec7063;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+
+    /* transition: 0.3s ease-in-out; */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.clear-er:hover {
+    /* background-color: firebrick;
+    color: white;
+    box-shadow: 0px 0px 5px 9px red;
+    transition: 5s; */
+    background-color: #e74c2c;
+    transform: scale(1.2);
+}
+
+.clear-er:active {
+    /* background-color: white;
+    color: black;
+    box-shadow: 0px 0px 0px 0px;
+    transition: 0s; */
+    background-color: #d04a38;
+}
+
+.clear-er:hover::before {
+    content: "Cast them into the fire";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-er::after {
+    content: "Cast them into the fire";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ec7063;
+    color: white;
+    border-radius: 5px;
+    z-index: 1;
+    /* transition: transform 0.5s ease-in-out; */ /* slideshow style? */
+    transform: translateY(100%);
+}
+
+.clear-er:hover::after {
+    transform: translateY(0);
+}
+
+
+
+/* Additional | Misc Styles */
+.projectTitle {
+    /* text-align: center; */
+    font-size: 30px;
+    font-weight: bold;
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
+    margin: 0;
+}
+
+.projectDescription{
+    /* text-align: center; */
+    font-size: 17px;
+    margin: 10px 0;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #d6d6d6;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.city{
+    border-width: 10px;
+    border-color: (12,12,12)
+}
+
+.rainButton{
+    width: 25px;
+    border-width: 1px;
+}
+.windButton{
+    width: 25px;
+    border-width: 1px;
+}
+.humidityButton{
+    width: 25px;
+}
+.city{
+    float:left;
+    border-width: 1px;
+}
+.wind{
+    float:left;
+    border-width: 1px;
+}
+.humidity{
+    float:left;
+    border-width: 1px;
+}
+
+.attribute{
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    max-width: 200px;
+    margin: 0 auto;
+    border-radius: 4px
+}
+
+#queue {
+    /* border-style:solid;
+    border-color:silver;
+    border-width: 5px; */
+    border: 1px solid #d6d6d6;
+    border-radius: 5px;
+    padding: 10px;
+}
+.error-message{
+    text-align: center;
+    margin: -2px, -2px, -2px, -2px;
+    padding: 0px, 0px, 0px, 0px
+}
+
+#filterForm{
+    /* display: none;
+    z-index: 99;
+    position: absolute;
+    background-image: linear-gradient(white, silver); */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#filterForm button {
+    background-color: #5dade2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#filterForm button:hover {
+    background-color: #4d8ac7;
+}
+
+#filterForm button:active {
+    background-color: #4a77b6;
+}
+
+#filter {
+    background-color: #f7f7f7;
+    border: 1px solid #d6d6d6;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#delete-button{
+    width: 25px;
+    height:25px;
+    background-color:steelblue;
+    background-image:url(images/delete_closed.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    
+}
+#delete-button:hover{
+    width: 27px;
+    height:27px;
+    background-image:url(images/delete_open.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    transition: 0.2s;
+}
+#delete-button:active{ 
+    width: 25px;
+    height:25px;
+    background-color: black;
+    background-image:url(images/delete_open.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    box-shadow: 0px 0px 2px 2px black;
+    transition: 0.2s;
+}
+
+#compare-button{
+    width: 25px;
+    height:25px;
+    background-color:steelblue;
+    background-image:url(images/delete_open.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+}
+
+/* Custom Cursor IMAGE needed */
+body.custom-cursor {
+    cursor: url(images/rain.png), auto;
+}

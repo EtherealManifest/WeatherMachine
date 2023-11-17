@@ -1,0 +1,57 @@
+NOTES etc.
+
+More cursor options? -> custom cursor (Jacob can make one?), cursor disappears/fades away, etc
+
+Let's setup a discord group? -> easier to send blocks of code and screenshots
+
+ChatGPT gave great response on cookies: Using cookies for saving user preferences without a backend
+is a practical solution. No need to hide everything behind a login. Cookies are data stored on the
+client-side and can keep track of user settings.
+
+I was thinking for the "classic" approach we use our custom icons and stuff and
+the default settings from weather API for the modern approach. 
+
+The 15 minute thing cannot be done for free tier (we can do 1 hour)
+
+There actually is a bunch of premade widgets, bunch of new/free api/data 
+
+
+
+
+
+----------------------------------------------------------------
+For the auto-refresh feature, you can use JavaScript's setInterval function to call your 
+function that fetches the weather data every 15 minutes. Here's a simplified example:
+// Function to fetch weather
+function fetchAndUpdateWeather() {
+    // Your fetch call to the API
+    // Update the UI with new data
+}
+
+// Set interval to call the fetchAndUpdateWeather every 15 minutes
+setInterval(fetchAndUpdateWeather, 900000); // 900000 milliseconds = 15 minutes
+
+Remember to clear this interval if the user navigates away from the page or when it's 
+no longer needed to avoid unnecessary API calls and potential memory leaks. rip
+
+
+
+
+As for the custom weather icons, you would likely have an object or function 
+that maps weather conditions to your icon filenames. For instance:
+const weatherIcons = {
+    "Sunny": "sunny.png",
+    "Partly Cloudy": "partly-cloudy.png",
+    // ... other mappings ...
+};
+
+function getWeatherIcon(condition) {
+    // Return the filename for the custom icon based on the condition
+    return weatherIcons[condition] || "default.png"; // Fallback to a default icon
+}
+
+// When updating the UI with weather data:
+const condition = data.current.condition.text; // Assume this is the condition from the API
+const iconFileName = getWeatherIcon(condition);
+// Set the image source to the icon
+document.getElementById("weather-icon").src = `/path/to/icons/${iconFileName}`;
