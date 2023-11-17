@@ -1,5 +1,14 @@
 # WeatherMachine
 
+<p align="center">
+    <img src="./images/WeatherMachineCrystalBall.png" alt="WeatherBall" width="200"/>
+    <img src="./images/WeatherLogoVector.png" alt="WeatherVector" width="200"/>
+</p>
+<p align="center">
+    <img src="./images/WeatherPinCondition.png" alt="WeatherPin" width="200"/>
+    <img src="./images/WeatherCompare.png" alt="WeatherCompare" width="200"/>
+</p>
+
 ## About the Project
 
 WeatherMachine is a weather application that allows users to fetch and compare weather conditions of multiple cities simultaneously. The app will display the current weather insights and some other information by toggling between simple and detailed views.

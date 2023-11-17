@@ -55,3 +55,9 @@ const condition = data.current.condition.text; // Assume this is the condition f
 const iconFileName = getWeatherIcon(condition);
 // Set the image source to the icon
 document.getElementById("weather-icon").src = `/path/to/icons/${iconFileName}`;
+
+
+standard image 2x2 
+| ![WeatherBall](./images/WeatherMachineCrystalBall.png) | ![WeatherVector](./images/WeatherLogoVector.png) |
+|:---:|:---:|
+| ![WeatherPin](./images/WeatherPinCondition.png) | ![WeatherCompare](./images/WeatherCompare.png) |
