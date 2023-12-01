@@ -106,9 +106,15 @@ input[type="text"] {
     display: block;
     margin: 0 auto;
     margin-top: -5px;
+    background-position:center;
+    background-size: contain;
 }
 .clear-er:hover{
-    background-color: firebrick;
+    background-image: url(images/lord-of-the-rings-cast-it.gif);
+    background-size:cover;
+    background-position:center;
+    background-repeat: no-repeat;
+    border-color: black;
     color: white;
     box-shadow: 0px 0px 5px 9px red;
     transition: 5s;
