@@ -19,56 +19,63 @@
         <img src = '/images/wind.png'>
     </div>
     <nav>
-        <ul></ul>
+        <ul class="nav-list">
             <li><a href = 'index.html'>Home</a></li>
             <li><a href = 'about.html'>About</a></li>
         </ul>
     </nav>
-    </header>
-    
-<nav>
-    <ul></ul>
-        <li><a href = 'index.html'>Home</a></li>
-        <li><a href = 'about.html'>About</a></li>
-    </ul>
-</nav>
-<div id="important">
-<h1>Ooh, yeah</h1>
+</header>
 
-<p>I did my time, and I want out</p>
-<h2>So <i>effusive, <strong>fade, <u>it doesn't</i> cut, the soul</strong> is not so vibrant</h2>
-<p>The <strong>reckoning</strong>, the <i>sickening</i></p>
-<h2>Packaging <u>subversion, <i>pseudo</u>-sacrosanct</i> perversion</h2>
-<h5>Go <i>drill</i> your deserts, go dig your graves</h5>
-<p>Then fill your mouth with <strong> the</strong> money you will save</p>
-<h3>Sinking <u>in</u>, getting smaller again</h3>
-<p>I'm done, <u>it has <i>begun</i>, I'm </u><strong> the only</strong> one</p>
-
-<p>And the rain <i>will</i> kill us all</p>
-<h5>Throw <strong> against</strong> the wall</h5>
-<h1>But no one else can see</h1>
-<p>The <strong>preservation</strong> of the martyr in me</p>
-
-<h4>Psychosocial, <u>psychosocial</u>, psychosocial</h4>
-<p><strong>, psychosocial</strong>, <i>psychosocial</i></p>
-
-<h2>There <u> are <i>cracks in </i>the road </u>we laid</h2>
-<p>But where <i>the</i> temple fell, the <u>secrets</u> have gone mad</p>
-<p>This is <h1>nothing</h1> <u>new</u>, but <strong>when</strong> we killed it all</p>
-<h3>The <strong> was</strong> all we had</h3>
-<p>Who needs another mess? We <i>could</i> start over</p>
-<p>Just look <strong> in</strong> the eyes and say I'm wrong</p>
-<p>Now there's only <i>emptiness</i>, <strong>, insipid</strong></p>
-<h1>I <u>think</u> we're done, I'm not the only one</h1>
+<!-- Hamburger Icon (Menu)-->
+<div class="hamburger" onclick="toggleMenu()">
+    ☰
 </div>
+<div class="menu">
+    <div class="menu-header">
+        Menu
+        <span class="close-btn" onclick="toggleMenu()">X</span>
+    </div>
+    <ul>
+        <!-- took out the 'settings' and 'features'-->
+        <a href = 'glossary.html'><li>Glossary</li></a>
+        <li onclick="toggleCursor()">Toggle Custom Cursor</li>
+        <li onclick="toggleTheme()">Toggle Theme</li>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p>Now, dont get all worked up, These are Slipknot Lyrics, I'm not having a mental break, and neither is our project</p>
+    </ul>
+</div>
+<script src="Menu.js"></script>
+
+
+<div id="wrapper">
+    <ul class = "glossary">
+        <li><b>Weather</b></li>
+        <li>the state of the atmosphere at a place and time as regards heat, dryness, sunshine, wind, rain, etc.</li>
+        <li><b>Time</b></li>
+        <ul class = "glossary">
+            <li><b>Epoch Time</b></li>
+            <li>This is the time in seconds Since January 1, 1970 Used for absolute computational time, giving all computers a common reference point for time</li>
+            <li><b>Local Time</b></li>
+        </ul>
+        <li><b>Condition Code</b></li>
+        <li>The way that the system tracks the weather at a location, using a number to denote certain conditions.</li>
+        <li><b>Is Day?</b></li>
+        <li>This denotes whether it is Day. 0 means it is night, 1 means that it is day. </li>
+        <li><b>Is Windy?</b></li>
+        <li>This denotes whether the weather can be flagged as windy or not. Based on local wind speed</li>
+        <li><b>Is Cloudy?</b></li>
+        <li>Denotes whether the weather is considered cloudy for this location</li>
+        <li><b>Pressure </b></li>
+        <li>Atmospheric pressure, which can be influence by temperature and humidity</li>
+        <ul class = "glossary">
+            <li><b>Millibars</b></li>
+            <li>Means of Measuring the pressure, in mercury. 1 bar is equal to 1/100,000 of a Pascal, or 1 Newton / Square Meter</li>
+            <li><b>Inches</b></li>
+            <li>Inches that Mercury rises under pressure. Because mercury is very dense, it is used to measure pressure.</li>
+        </ul>
+        <li><b>Humidity</b></li>
+        <li>A measure of the water vapor in the air. 0% means completely Dry, 100% means rain. </li>
+        <li><b>Ultraviolet Index</b></li>
+        <li>A measure of the intensity of the UV rays form the sun, on a scale of 1 (low risk) to 10 (Very high risk). The higher the number, the more dangerous.</li>
+    </ul>
+</div>
 </html>
