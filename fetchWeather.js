@@ -369,6 +369,10 @@ function getRndInteger(min, max) {
 //If it is empty, it will remove locations from the queue until it is empty. 
 //This listener is bound to the button that reads: "Cast them into the Fire"
 clearButton.addEventListener("click", ()=>{
+    //Clear all cookies
+    for(let i = 0; i < 10; i++)
+        setCookie(`Location${i}`, "", "0")
+
     //TileList is set to an empty list. THis is because displayList will look at the 
     //size of the list to determine it's next step.
     TileList = [];
