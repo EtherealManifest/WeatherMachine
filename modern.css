@@ -128,17 +128,20 @@ input[type="text"] {
 
     border-style: groove;
     border-width: 4px;
-    border-color: cornflowerblue;
-    background-image: linear-gradient(lightblue, rgb(72, 130, 154));
-    float: center; /* float? forgot why I have it set like this*/
-    margin-top: 10px;
+    border-color: #ffffff;
+    color: #333;
+    /* background-image: linear-gradient(lightblue, rgb(72, 130, 154)); */
+    /* float: center; /* float? forgot why I have it set like this*/
+    /* margin-top: 10px; */
+    margin: 10px;
 
     padding: 15px;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: rgb(255, 255, 255);
     border: 1px solid #d6d6d6;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transofmr 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* transform? */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* transform? transofmr */
 }
 .LocationTile:hover {
     transform: translateY(-5px);
