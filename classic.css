@@ -363,14 +363,18 @@ li:hover {
 
 /* Custom Cursor IMAGE needed */
 body.custom-cursor {
-    cursor: url(images/rain.png), auto;
+    cursor: url(images/Spaceship.png), auto;
 }
 
 .glossary{
-    margin-left: 1em;
+    padding-left: 1em;
     display:block;
+    list-style: circle;
+    list-style-position: inside;
 }
 .glossary li{
+    list-style: circle;
+    list-style-position: inside;
     display:block;
 
 }
