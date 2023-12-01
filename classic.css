@@ -351,7 +351,7 @@ a:hover{
     cursor: pointer;
 }
 
-ul {
+/* ul {
     list-style-type: none;
     padding: 0;
 }
@@ -363,6 +363,22 @@ li {
 }
 
 li:hover {
+    background-color: #f4f4f4;
+} */
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Add this to remove default margin */
+}
+
+.menu li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.menu li:hover {
     background-color: #f4f4f4;
 }
 
