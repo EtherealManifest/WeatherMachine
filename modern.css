@@ -446,6 +446,28 @@ li:hover {
     background-size: 75%;
 }
 
+.nav-list {
+    text-align: center;
+    padding: 0;
+}
+
+.nav-list li {
+    display: inline-block;
+    padding: 5px;
+    /* Add other styles if necessary */
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: snow;
+    /* Add other styles if necessary */
+}
+
+.nav-list a:hover {
+    color: snow;
+}
+
+
 /* Custom Cursor IMAGE needed */
 body.custom-cursor {
     cursor: url(images/rain.png), auto;
