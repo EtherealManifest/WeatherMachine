@@ -224,7 +224,6 @@ function saveSettings() {
 locations should be added to and taken away from this directly*/
 let TileList = [];
 
-
 //This function will take in a location to search for.
  //It will go the the API and return the information, distilling it
 //into the corresponding categories in a temporary Weather object, then 
@@ -309,8 +308,13 @@ async function checkWeather(City){
     tempLocation.gustKph = data.current.gust_kph.toFixed(2)
     //the current wind gust speed, in miles per hour
     tempLocation.gustMph = data.current.gust_mph.toFixed(2)
-    
 
+    for(let i = 0; i < 10; i++)
+        if(TileList[i] == null)
+        {
+            setCookie(`Location${i}`, City, "0.1")
+            break;
+        }
 
     //Having collected all of this information, return it.
     //There is a queue reset here, that is just designed to make sure locations are not duplicated
@@ -320,7 +324,11 @@ async function checkWeather(City){
     displayList();
     TileList = temp;
     displayList();
+
+    
 }
+
+
 
 /*This event listener will add a location to the tile list,
  adding the locations data. It is bound to hitting the search
@@ -456,7 +464,8 @@ function displayList(){
                 if(TileList.length == 1){
                     TileList = [];
                     displayList();
-                    returnw
+                    setCookie(`Location0`, "", "0")
+                    return
                 }
                 TileList.splice(index, 1)
                 let temp = TileList
@@ -464,6 +473,8 @@ function displayList(){
                 displayList();
                 TileList = temp;
                 displayList();
+                
+                setCookie(`Location${index}`, "", "0")
             })
             clearTileButton.classList.add(i)
             clearTileButton.setAttribute('id','delete-button');
@@ -543,14 +554,17 @@ function displayList(){
       }
       
       function checkCookie() {
-        let user = getCookie("Location");
+        for(let i = 0; i<10; i++)
+        {
+        let user = getCookie(`Location${i}`);
         if (user != "") {
           checkWeather(user)
         } else {
     
         }
+        }
       } 
     
-      setCookie("Location", "Sharon Springs, KS", "0.1")
+    //   setCookie("Location", "Sharon Springs, KS", "0.1")
       checkCookie()
     //displayList();document.cookie = `username=${}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
