@@ -6,6 +6,7 @@
 }
 
 .LocationTile {
+    width:fit-content;
     display: inline-block;
     border-style: groove;
     border-width: 4px;
@@ -20,9 +21,13 @@
 }
 
 .LocationTile:hover {
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     border-width: 5px;
     font-size: 12px;
-    white-space: nowrap;
+    text-size-adjust: 30px;
+    
 }
 .LocationTile:hover > #delete-button{
     position:sticky;
