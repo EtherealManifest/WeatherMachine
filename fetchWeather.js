@@ -492,12 +492,14 @@ function displayList(){
     }
     }
     //////////////////// COOKIE BUSINESS ///////////////////////
+    //Creates a cookie with a name, value, and expiration date in days
     function setCookie(cname, cvalue, exdays) {
         const d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
         let expires = "expires="+d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
+    //takes the name to return the data in the cookie
       function getCookie(cname) {
         let name = cname + "=";
         let ca = document.cookie.split(';');
@@ -512,7 +514,7 @@ function displayList(){
         }
         return "";
       }
-      
+      //When the website runs, it'll get every location and run them through the search.
       function checkCookie() {
         for(let i = 0; i<10; i++)
         {
