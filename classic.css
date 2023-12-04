@@ -15,7 +15,7 @@ body{
     flex-direction: column;
 }
 body.custom-cursor {
-    cursor: url(images/delete_closed.png), auto;
+    cursor: url(images/IceFire.png), auto;
 }
 button{
     border-radius: 10px;
