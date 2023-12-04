@@ -1,15 +1,14 @@
 NOTES etc.
 
-More cursor options? -> custom cursor (Jacob can make one?), cursor disappears/fades away, etc
+More cursor options? DONE
 
-Let's setup a discord group? -> easier to send blocks of code and screenshots
+Cookies - need setup for filtering
 
 ChatGPT gave great response on cookies: Using cookies for saving user preferences without a backend
 is a practical solution. No need to hide everything behind a login. Cookies are data stored on the
 client-side and can keep track of user settings.
 
-I was thinking for the "classic" approach we use our custom icons and stuff and
-the default settings from weather API for the modern approach. 
+classic theme needs custom icons and modern theme needs default icons
 
 The 15 minute thing cannot be done for free tier (we can do 1 hour)
 
@@ -55,9 +54,3 @@ const condition = data.current.condition.text; // Assume this is the condition f
 const iconFileName = getWeatherIcon(condition);
 // Set the image source to the icon
 document.getElementById("weather-icon").src = `/path/to/icons/${iconFileName}`;
-
-
-standard image 2x2 
-| ![WeatherBall](./images/WeatherMachineCrystalBall.png) | ![WeatherVector](./images/WeatherLogoVector.png) |
-|:---:|:---:|
-| ![WeatherPin](./images/WeatherPinCondition.png) | ![WeatherCompare](./images/WeatherCompare.png) |

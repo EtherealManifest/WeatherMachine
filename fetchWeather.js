@@ -572,3 +572,52 @@ function displayList(){
     //   setCookie("Location", "Sharon Springs, KS", "0.1")
       checkCookie()
     //displayList();document.cookie = `username=${}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+
+
+/* Forecast */
+// Add an event listener to your 'Show Forecast' button
+document.getElementById('show-forecast-btn').addEventListener('click', function() {
+    // const city = searchBox.value; // Assuming this is where the user inputs the city name
+    // getForecast(city);
+    const city = searchBox.value.trim(); // Trim whitespace
+    if (city) {
+        getForecast(city);
+    } else {
+        alert('Please enter a city name before showing the forecast.'); // Simple alert, or you can make this fancier
+    }
+});
+
+// Function to get forecast data
+async function getForecast(city) {
+    const apiKey = 'bfaf6f3581b14ed88fc233827231009';
+    const forecastUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=3`; // Change days as needed
+
+    try {
+        const response = await fetch(forecastUrl); // 
+        const data = await response.json();
+        displayForecast(data.forecast.forecastday);
+    } catch (error) {
+        console.error('Error fetching forecast data:', error);
+    }
+}
+
+// Function to display forecast data
+function displayForecast(forecastDays) {
+    const forecastContainer = document.getElementById('forecast-container');
+    forecastContainer.innerHTML = ''; // Clear any existing forecast
+
+    forecastDays.forEach(day => {
+        const forecastDiv = document.createElement('div');
+        forecastDiv.classList.add('forecast-day');
+        forecastDiv.innerHTML = `
+            <h4>${day.date}</h4>
+            <img src="${day.day.condition.icon}" alt="${day.day.condition.text}">
+            <p>High: ${day.day.maxtemp_c}°C, Low: ${day.day.mintemp_c}°C</p>
+            <p>Condition: ${day.day.condition.text}</p>
+            <!-- Add more details as needed -->
+        `;
+        forecastContainer.appendChild(forecastDiv);
+    });
+
+    forecastContainer.style.display = 'block'; // Make the forecast visible
+}
