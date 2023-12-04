@@ -21,6 +21,7 @@ WeatherMachine is a weather application that allows users to fetch and compare w
 - Local Hosting: Currently optimized for local hosting to ensure rapid development and ease of use
 - Responsive Design: Fully responsive web design for a seamless experience across various devices (not mobile atm)
 - Customization: User preferences are stored using cookies for a personalized experience
+- Basic Forecast Feature with weather attributes
 - ...
 
 ## Built With
@@ -63,17 +64,20 @@ Open `index.html` in your web browser to view the project. (Can use many VSCode 
 - [ ] Light/Dark mode implementation
 - [x] Classic and Modern Theme
 - [ ] Integrate an auto-refresh feature (15 minute)
+- [ ] Printing functionality
 - [ ] Mobile compatibility and responsive design
 - [ ] Localization for multi-language support ?
 
 ## Gallery
 
 Here are some screenshots and images that illustrate the features and user interface of WeatherMachine:
-(Previous versions)
+Demo 1 version
 ![Classic Theme](./images/classicWeatherMachine.png)
 
+Preview of Modern theme + Menu
 ![Modern Theme](./images/modernWeatherMachine.png)
 
+Demo 2 screenshots
 ![Classic Theme Home](./images/classicTheme.png)
 ![Modern Theme Home](./images/modernTheme.png)
 ![Glossary Page](./images/glossary.png)
