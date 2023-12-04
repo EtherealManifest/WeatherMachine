@@ -15,7 +15,7 @@ body{
     flex-direction: column;
 }
 body.custom-cursor {
-    cursor: url(images/IceFire.png), auto;
+    cursor: url(images/victory_slime_sprite.png), auto;
 }
 button{
     border-radius: 10px;
@@ -167,6 +167,7 @@ ul {
     background-position:center;
     background-image:none;
     background-size: contain;
+    transition: .5s;
 }
 .clear-er:hover{
 
@@ -174,11 +175,14 @@ ul {
     background-size:cover;
     background-position:center;
     background-repeat: no-repeat;
-    border-color: black;
+    border-color: crimson;
+    border-width:7px;
+    border-radius: 0px;
+    border-style:ridge;
     color: white;
-    box-shadow: 0px 0px 5px 9px red;
-    -webkit-transition: background-image 5s ease-in-out;
-    transition: 5s;
+    box-shadow: 0px 0px 1000px 1000px red;
+    transition: 10s ease-in-out, border 3s;
+
 
 }
 .clear-er:active{
