@@ -10,6 +10,9 @@ a:hover{
 body{
     /*background-color: rgb(118, 214, 255);*/
     margin: 0px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 body.custom-cursor {
     cursor: url(images/Spaceship.png), auto;
@@ -209,6 +212,10 @@ ul {
     display:block;
 
 }
+.glossary-content{
+    padding-top: 10px;
+    padding-bottom: 25px;
+}
 .hamburger {
     font-size: 24px;
     cursor: pointer;
@@ -239,13 +246,8 @@ ul {
     transition: border-width 0.2s ease-out, font-size 0.2s ease-out; /* Smooth transition for specific properties */
 }
 .LocationTile:hover {
-    white-space:nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     border-width: 5px;
     font-size: 12px;
-    text-size-adjust: 30px;
-    
 }
 .LocationTile:hover > #delete-button{
     position:sticky;

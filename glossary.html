@@ -10,6 +10,7 @@
     <link id ="theme-style" rel="stylesheet" href="classic.css">
     <script type = "module" src="fetchWeather.js"></script>
 </head>
+<div id="wrapper">
 <header>
     <div class="projectTitle">
         <img id = "head" src = '/images/Cloudy.png'>
@@ -46,37 +47,39 @@
 </div>
 <script src="Menu.js"></script>
 
-
-<div id="wrapper">
-    <ul class = "glossary">
-        <li><b>Weather</b></li>
-        <li>the state of the atmosphere at a place and time as regards heat, dryness, sunshine, wind, rain, etc.</li>
-        <li><b>Time</b></li>
+<body>
+    <div class = "glossary-content">
         <ul class = "glossary">
-            <li><b>Epoch Time</b></li>
-            <li>This is the time in seconds Since January 1, 1970 Used for absolute computational time, giving all computers a common reference point for time</li>
-            <li><b>Local Time</b></li>
+            <li><b>Weather</b></li>
+            <li>the state of the atmosphere at a place and time as regards heat, dryness, sunshine, wind, rain, etc.</li>
+            <li><b>Time</b></li>
+            <ul class = "glossary">
+                <li><b>Epoch Time</b></li>
+                <li>This is the time in seconds Since January 1, 1970 Used for absolute computational time, giving all computers a common reference point for time</li>
+                <li><b>Local Time</b></li>
+            </ul>
+            <li><b>Condition Code</b></li>
+            <li>The way that the system tracks the weather at a location, using a number to denote certain conditions.</li>
+            <li><b>Is Day?</b></li>
+            <li>This denotes whether it is Day. 0 means it is night, 1 means that it is day. </li>
+            <li><b>Is Windy?</b></li>
+            <li>This denotes whether the weather can be flagged as windy or not. Based on local wind speed</li>
+            <li><b>Is Cloudy?</b></li>
+            <li>Denotes whether the weather is considered cloudy for this location</li>
+            <li><b>Pressure </b></li>
+            <li>Atmospheric pressure, which can be influence by temperature and humidity</li>
+            <ul class = "glossary">
+                <li><b>Millibars</b></li>
+                <li>Means of Measuring the pressure, in mercury. 1 bar is equal to 1/100,000 of a Pascal, or 1 Newton / Square Meter</li>
+                <li><b>Inches</b></li>
+                <li>Inches that Mercury rises under pressure. Because mercury is very dense, it is used to measure pressure.</li>
+            </ul>
+            <li><b>Humidity</b></li>
+            <li>A measure of the water vapor in the air. 0% means completely Dry, 100% means rain. </li>
+            <li><b>Ultraviolet Index</b></li>
+            <li>A measure of the intensity of the UV rays form the sun, on a scale of 1 (low risk) to 10 (Very high risk). The higher the number, the more dangerous.</li>
         </ul>
-        <li><b>Condition Code</b></li>
-        <li>The way that the system tracks the weather at a location, using a number to denote certain conditions.</li>
-        <li><b>Is Day?</b></li>
-        <li>This denotes whether it is Day. 0 means it is night, 1 means that it is day. </li>
-        <li><b>Is Windy?</b></li>
-        <li>This denotes whether the weather can be flagged as windy or not. Based on local wind speed</li>
-        <li><b>Is Cloudy?</b></li>
-        <li>Denotes whether the weather is considered cloudy for this location</li>
-        <li><b>Pressure </b></li>
-        <li>Atmospheric pressure, which can be influence by temperature and humidity</li>
-        <ul class = "glossary">
-            <li><b>Millibars</b></li>
-            <li>Means of Measuring the pressure, in mercury. 1 bar is equal to 1/100,000 of a Pascal, or 1 Newton / Square Meter</li>
-            <li><b>Inches</b></li>
-            <li>Inches that Mercury rises under pressure. Because mercury is very dense, it is used to measure pressure.</li>
-        </ul>
-        <li><b>Humidity</b></li>
-        <li>A measure of the water vapor in the air. 0% means completely Dry, 100% means rain. </li>
-        <li><b>Ultraviolet Index</b></li>
-        <li>A measure of the intensity of the UV rays form the sun, on a scale of 1 (low risk) to 10 (Very high risk). The higher the number, the more dangerous.</li>
-    </ul>
+    </div>
+</body>
 </div>
 </html>
