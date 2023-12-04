@@ -1,8 +1,6 @@
 import {Weather, Comparison} from "./Class.js";
 
 const apiURL = "http://api.weatherapi.com/v1/current.json?key=bfaf6f3581b14ed88fc233827231009&q=";
-//http://api.weatherapi.com/v1/current.json?key=bfaf6f3581b14ed88fc233827231009&q=67601&aqi=no
-
 const card = document.querySelector('.card')
 //The input box for the search
 const searchBox = document.querySelector(".search input")
@@ -19,7 +17,7 @@ const filterForm = document.querySelector(".filterForm")
 const errorMessage = document.querySelector(".error-message")
 const luckyButton = document.querySelector(".luckyButton")
 /* searchKey can either be a zip code or City, State*/
-/*This is where the Settings can be defined as variables*/
+/*This is where the Settings are defined as variables*/
 const nameEnabler = document.getElementById("name");
 const regionEnabler = document.getElementById("region");
 const countryEnabler = document.getElementById("country");
@@ -53,6 +51,8 @@ const gustMphEnabler = document.getElementById("gustMPH");
 const gustKphEnabler = document.getElementById("gustKPH");
 const enableAllButton = document.getElementById("EnableAll")
 const disableAllButton = document.getElementById("DisableAll")
+let elementsArray = document.querySelectorAll("#filterForm button");
+
 
 let ComparisonZone = new Comparison();
 
@@ -168,9 +168,9 @@ let Displayed = {
         this.weatherImage = false;
         updateColor();
     }
-    }
+}
 
-let elementsArray = document.querySelectorAll("#filterForm button");
+
 elementsArray.forEach(function(elem) {
     elem.style.color = "red";
     elem.addEventListener("click", () => {
@@ -300,7 +300,7 @@ async function checkWeather(City){
     tempLocation.feelsLikeF = data.current.feelslike_f.toFixed(2)
     //the current visibility, in kilometers
     tempLocation.visibilityKM = data.current.vis_km.toFixed(2)
-    //the current visibility, in miles
+    //the current visibility, in miles, has to be calculated
     tempLocation.visibilityMi = (data.current.vis_km * 0.62).toFixed(2)
     //the UV index, on a scale of 1-10
     tempLocation.UV = data.current.uv
@@ -308,6 +308,7 @@ async function checkWeather(City){
     tempLocation.gustKph = data.current.gust_kph.toFixed(2)
     //the current wind gust speed, in miles per hour
     tempLocation.gustMph = data.current.gust_mph.toFixed(2)
+    //add the current weatherIcon
 
     for(let i = 0; i < 10; i++)
         if(TileList[i] == null)
@@ -328,8 +329,6 @@ async function checkWeather(City){
     
 }
 
-
-
 /*This event listener will add a location to the tile list,
  adding the locations data. It is bound to hitting the search
  button. 
@@ -345,25 +344,6 @@ searchButton.addEventListener("click", ()=>{
         checkWeather(searchBox.value)
     }
 })
-
-/*
-luckyButton.addEventListener("click", ()=> {
-    if(TileList.length == 10){
-        errorMessage.innerHTML = "Too Many Locations! Please Clear a Location Before Adding Another."
-    }
-    else{
-        errorMessage.innerHTML = null;
-        let temp = checkWeather((getRndInteger(-90, 90), getRndInteger(-180, 180)))
-        console.log(temp)
-        }
-    }
-)
-
-//used Above
-function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
-  }
-*/
 
 //Display list has a check at the beginning of it that examines the current size of TileList
 //If it is empty, it will remove locations from the queue until it is empty. 
@@ -414,10 +394,8 @@ IF IT IS 0, IT WILL AUTOMATICALLY DELETE ALL THE TIMES IN THE QUEUE WHEN IT IS
 RUN. */
 function displayList(){
     const queue = document.getElementById("queue");
-
     //if the list is empty(It will be set to that when the "Clear" button is pressed),
     //remove elements until the queue is empty
-    //FIXME: Currently this only removes "Half" of the list... ?
     if(TileList.length == 0){
         //remove all locations from the queue:
         //First, select all elements with the class name"LocationTile"
@@ -493,9 +471,6 @@ function displayList(){
                 if(ComparisonZone.tile1.name == ""){
                     //add this tile in the first slot. IndexCompare is derived from the position in the 
                     //for loop above 
-
-                    //FIXME: add a way to change the color of the button after it is pressed to indicate that
-                    //the button has been pressed
                     ComparisonZone.tile1 = TileList[indexCompare]
                     ComparisonZone.updateAndDisplay();
                 }
@@ -511,31 +486,12 @@ function displayList(){
             compareTileButton.setAttribute('id','compare-button');
             newTile.appendChild(compareTileButton);
             /////////////////////////////////////////////////////////////////////////////////////////
-
         //finally, append the new Tile into the queue. This tile contains all of the data from the 
         //dataframe, with /undefined/ anywhere that nothing was found in the Database
         queue.appendChild(newTile);
-
-        
     }
-
-        /*As an addendum, this looks really complicated. the reason i have a <p> in a <div> is because the 
-        original formatting set is as a super long string. adding \n to the end of the attributes wouldn't
-        fix it either. this seems to make it look better, and potentially allows us to manipulate the data 
-        easier as each element is now targetable via the "attribute" class. 
-        */
     }
-
-    function removeElement(elementnum){
-        //find the element with elementName as its title, and remove it from TileList, then
-        //redraw the Queue
-        return;
-
-    }
-
-
-    ///////////////////////////////////////////
-
+    //////////////////// COOKIE BUSINESS ///////////////////////
     function setCookie(cname, cvalue, exdays) {
         const d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
