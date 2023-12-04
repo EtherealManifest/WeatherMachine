@@ -24,27 +24,11 @@
             <li><a href = 'index.html'>Home</a></li>
             <li><a href = 'about.html'>About</a></li>
             <li><a href = 'glossary.html'>Glossary</a></li>
+            <li onclick="toggleCursor()" id="toggleCursor">Toggle Cursor</li>
         </ul>
     </nav>
 </header>
 
-<!-- Hamburger Icon (Menu)-->
-<div class="hamburger" onclick="toggleMenu()">
-    ☰
-</div>
-<div class="menu">
-    <div class="menu-header">
-        Menu
-        <span class="close-btn" onclick="toggleMenu()">X</span>
-    </div>
-    <ul>
-        <!-- took out the 'settings' and 'features'-->
-        <a href = 'glossary.html'><li>Glossary</li></a>
-        <li onclick="toggleCursor()">Toggle Custom Cursor</li>
-        <li onclick="toggleTheme()">Toggle Theme</li>
-
-    </ul>
-</div>
 <script src="Menu.js"></script>
 
 <body>

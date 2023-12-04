@@ -15,7 +15,7 @@ body{
     flex-direction: column;
 }
 body.custom-cursor {
-    cursor: url(images/Spaceship.png), auto;
+    cursor: url(images/delete_closed.png), auto;
 }
 button{
     border-radius: 10px;
@@ -124,6 +124,14 @@ ul {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically (optional) */
     flex-wrap: wrap; /* Allow tiles to wrap to new line if needed */
+}
+#toggleCursor{
+    text-decoration:underline;
+    visibility:visible;
+    color: cornflowerblue;
+}
+#toggleCursor:hover{
+    color: steelblue;
 }
 #wrapper{
 	height: 100%;
@@ -359,7 +367,6 @@ ul {
     width: 25px;
     border-width: 1px;
 }
-
 @font-face {
     font-family: myFirstFont;
     src: url(fonts/Windlass.ttf);
