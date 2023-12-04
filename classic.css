@@ -51,7 +51,6 @@ ul {
     padding: 0;
 }
 
-
 #compare-button{
     width: 25px;
     height:25px;
@@ -133,11 +132,22 @@ ul {
 #toggleCursor:hover{
     color: steelblue;
 }
+
+#theme-toggle{
+    text-decoration:underline;
+    visibility:visible;
+    color: cornflowerblue;
+}
+#theme-toggle:hover{
+    color: steelblue;
+}
+
 #wrapper{
 	height: 100%;
 	min-height: 120vh;
 	width: 100%;
 	background-image: linear-gradient(snow, cornflowerblue);
+    position: relative; /* fixes footer */
 }
 
 
@@ -182,7 +192,6 @@ ul {
     color: white;
     box-shadow: 0px 0px 1000px 1000px red;
     transition: 10s ease-in-out, border 3s;
-
 
 }
 .clear-er:active{
@@ -375,3 +384,72 @@ ul {
     font-family: myFirstFont;
     src: url(fonts/Windlass.ttf);
  }
+
+ #forecast-section {
+    text-align: center;
+    padding: 20px;
+}
+
+#forecast-container {
+    display: none; 
+    margin-top: 20px;
+}
+
+#show-forecast-btn {
+    padding: 10px 10px;
+    cursor: pointer;
+    background-color: lightgray;
+    color: cornflowerblue;
+    border-color: cornflowerblue;
+    border-width: 2px;
+    background-size: 75%;
+    background-position: center center;
+}
+
+#github-link {
+    visibility: visible;
+    color: cornflowerblue;
+    border-color: cornflowerblue;
+    border-radius: 5px;
+    text-decoration: underline;
+    transition: background-color 0.3s;
+}
+#github-link-btn {
+    display: inline-block;
+    background-color: cornflowerblue; 
+    color: white;
+    padding: 3px 3px;
+    border-radius: 3px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+#github-link:hover {
+    background-color: steelblue;
+}
+
+#github-link-btn:hover {
+    background-color: steelblue;
+}
+
+/* footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+    border-color: steelblue; 
+    border-radius: 3px;
+    background-color: snow;
+} */
+
+footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f4f4f4; 
+}

@@ -55,13 +55,13 @@ Open `index.html` in your web browser to view the project. (Can use many VSCode 
 - [x] Implement basic city search functionality
 - [x] Display city weather data
 - [x] Develop comparative analysis feature of multiple cities
-- [x] Implement view modes (simple and detailed) - filters?
-- [ ] Introduce cookie-based preference saving
-- [ ] Enchance user interface and UX design
-- [ ] Weather forecasting feature ?
-- [ ] Integration of custom and default weather conditon icons
-- [ ] Light/Dark mode implementation ?
-- [ ] Classic and Modern Theme
+- [x] Implement view modes (simple and detailed) - filters
+- [x] Introduce cookie-based preference saving (INCOMPLETE)
+- [x] Enchance user interface and UX design (basic)
+- [x] Weather forecasting feature (basic)
+- [x] Integration of custom and default weather conditon icons
+- [ ] Light/Dark mode implementation
+- [x] Classic and Modern Theme
 - [ ] Integrate an auto-refresh feature (15 minute)
 - [ ] Mobile compatibility and responsive design
 - [ ] Localization for multi-language support ?
@@ -69,6 +69,11 @@ Open `index.html` in your web browser to view the project. (Can use many VSCode 
 ## Gallery
 
 Here are some screenshots and images that illustrate the features and user interface of WeatherMachine:
+(Previous versions)
 ![Classic Theme](./images/classicWeatherMachine.png)
 
 ![Modern Theme](./images/modernWeatherMachine.png)
+
+![Classic Theme Home](./images/classicTheme.png)
+![Modern Theme Home](./images/modernTheme.png)
+![Glossary Page](./images/glossary.png)
