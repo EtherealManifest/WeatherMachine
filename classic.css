@@ -1,195 +1,18 @@
-#queue{
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically (optional) */
-    flex-wrap: wrap; /* Allow tiles to wrap to new line if needed */
+a:link{
+    color: cornflowerblue;
 }
-
-.LocationTile {
-    width:fit-content;
-    display: inline-block;
-    border-style: groove;
-    border-width: 4px;
-    border-color: cornflowerblue;
-    padding: 10px;
-    background-image: linear-gradient(rgb(51, 113, 230), rgb(134, 171, 241));
-    margin-top: 10px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-    font-size: 10px;
-    transition: border-width 0.2s ease-out, font-size 0.2s ease-out; /* Smooth transition for specific properties */
+a:visited{
+    color:cornflowerblue;
 }
-
-.LocationTile:hover {
-    white-space:nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    border-width: 5px;
-    font-size: 12px;
-    text-size-adjust: 30px;
-    
+a:hover{
+    color: steelblue;
 }
-.LocationTile:hover > #delete-button{
-    position:sticky;
-    Justify-content: center;
-    bottom:0;
-}
-.LocationTile:hover > #compare-button{
-    position:sticky;
-    justify-content: center;
-    bottom:0;
-}
-
-@font-face {
-    font-family: myFirstFont;
-    src: url(fonts/Windlass.ttf);
- }
-.projectTitle{
-    text-align: center;
-    font-family: myFirstFont;
-    font-size: 50px;
-    color: rgb(56, 93, 123);
-    background-image: linear-gradient(cornflowerblue, snow);
-    font-weight: bold;
-    padding-top: 20px;
-    padding-bottom: 15px;
-}
-
-.projectDescription{
-    text-align: center;
-    font-size: 17px;
-}
-
-#wrapper
-{
-	height: 100%;
-	min-height: 120vh;
-	width: 100%;
-	background-image: linear-gradient(snow, cornflowerblue);
-}
-
 body{
-    background-color: rgb(118, 214, 255);
+    /*background-color: rgb(118, 214, 255);*/
     margin: 0px;
 }
-.city{
-    border-width: 10px;
-    border-color: (12,12,12)
-}
-
-.search{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 575px;
-}
-
-input[type="text"] {
-    flex: 1;
-    width: 200px;
-    padding: 10px;
-    margin-left: 575px;
-    border-radius: 20px;
-}
-
-.searchButton{
-    width: 30px;
-    height: 30px;
-    background-image: url(images/search.png);
-    background-size: 30px 30px;
-}
-.searchButton:hover{
-    border-width: 99px;
-}
-
-.clear-er{
-    display: block;
-    margin: 0 auto;
-    margin-top: -5px;
-    background-position:center;
-    background-size: contain;
-}
-.clear-er:hover{
-    background-image: url(images/lord-of-the-rings-cast-it.gif);
-    background-size:cover;
-    background-position:center;
-    background-repeat: no-repeat;
-    border-color: black;
-    color: white;
-    box-shadow: 0px 0px 5px 9px red;
-    transition: 5s;
-}
-
-.clear-er:active{
-    background-color: white;
-    color: black;
-    box-shadow: 0px 0px 0px 0px;
-    transition: 0s;
-}
-
-.rainButton{
-    width: 25px;
-    border-width: 1px;
-}
-.windButton{
-    width: 25px;
-    border-width: 1px;
-}
-.humidityButton{
-    width: 25px;
-}
-.city{
-    float:left;
-    border-width: 1px;
-}
-.wind{
-    float:left;
-    border-width: 1px;
-}
-.humidity{
-    float:left;
-    border-width: 1px;
-}
-
-
-.attribute{
-    border-style: solid;
-    border-width: 0px;
-    border-color: black;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-weight: bold;
-    max-width: 200px;
-    margin: 0 auto;
-    border-radius: 4px
-}
-
-
-.error-message{
-    text-align: center;
-    margin: -2px, -2px, -2px, -2px;
-    padding: 0px, 0px, 0px, 0px
-}
-.filter-er{
-    justify-content:center;
-    margin-left: 45%; 
-}
-#filterForm{
-    margin-left: 25%;
-    max-width: 50%;
-    display: none;
-    z-index: 99;
-    position: absolute;
-    border-style:inset;
-    border-width:3px;
-    border-color: cornflowerblue;
-    background-image: linear-gradient(cornflowerblue, lightblue, cornflowerblue);
-    
-}
-#filterform > button{
-    background-color: black;
+body.custom-cursor {
+    cursor: url(images/Spaceship.png), auto;
 }
 button{
     border-radius: 10px;
@@ -198,17 +21,49 @@ button{
     border-color: cornflowerblue;
     border-width: 2px;
 }
-.filter-er:hover{
-    border-width: 3px;
+input[type="text"] {
+    flex: 1;
+    width: 200px;
+    padding: 10px;
+    margin-left: 575px;
+    border-radius: 20px;
 }
-#EnableAll{
-    display:none;
+li{
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+nav{
+    text-align: center;
+    color: snow;
+    font-family:'Calibri', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+    outline: 1px solid cornflowerblue;
+    background-color:snow
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-#DisableAll{
-    display:none;
-}
 
+#compare-button{
+    width: 25px;
+    height:25px;
+    background-color:cornflowerblue;
+    background-image:url(images/compare.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+}
+#compare-button:hover{
+    transition: .5s;
+    width: 27px;
+    height:27px;
+    background-image:url(images/compare-2.png)
+}
 #delete-button{
     width: 25px;
     height:25px;
@@ -240,23 +95,243 @@ button{
     box-shadow: 0px 0px 2px 2px black;
     transition: 0.2s;
 }
+#DisableAll{
+    display:none;
+}
+#EnableAll{
+    display:none;
+}
+#filterForm{
+    margin-left: 25%;
+    max-width: 50%;
+    display: none;
+    z-index: 99;
+    position: absolute;
+    border-style:inset;
+    border-width:3px;
+    border-color: cornflowerblue;
+    background-image: linear-gradient(cornflowerblue, lightblue, cornflowerblue);
+    
+}
+#filterform > button{
+    background-color: black;
+}
+#queue{
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically (optional) */
+    flex-wrap: wrap; /* Allow tiles to wrap to new line if needed */
+}
+#wrapper{
+	height: 100%;
+	min-height: 120vh;
+	width: 100%;
+	background-image: linear-gradient(snow, cornflowerblue);
+}
 
-#compare-button{
-    width: 25px;
-    height:25px;
-    background-color:cornflowerblue;
-    background-image:url(images/compare.png);
-    background-position: center center;
+
+.attribute{
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    max-width: 200px;
+    margin: 0 auto;
+    border-radius: 4px
+}
+.city{
+    border-width: 10px;
+    border-color: (12,12,12);
+    float:left;
+    border-width: 1px;
+}
+.clear-er{
+    display: block;
+    margin: 0 auto;
+    margin-top: -5px;
+    background-position:center;
+    background-image:none;
+    background-size: contain;
+}
+.clear-er:hover{
+
+    background-image: url(images/lord-of-the-rings-cast-it.gif);
+    background-size:cover;
+    background-position:center;
     background-repeat: no-repeat;
-    background-size: 75%;
-}
-#compare-button:hover{
-    transition: .5s;
-    width: 27px;
-    height:27px;
-    background-image:url(images/compare-2.png)
-}
+    border-color: black;
+    color: white;
+    box-shadow: 0px 0px 5px 9px red;
+    -webkit-transition: background-image 5s ease-in-out;
+    transition: 5s;
 
+}
+.clear-er:active{
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 0px 0px;
+    transition: 0s;
+}
+.close-btn {
+    cursor: pointer;
+}
+.compareAttribute{
+    text-align: center;
+    font-weight: bold;
+    padding: 0px;
+    margin:0px;
+}
+.error-message{
+    text-align: center;
+    margin: -2px, -2px, -2px, -2px;
+    padding: 0px, 0px, 0px, 0px
+}
+.filter-er{
+    justify-content:center;
+    margin-left: 45%; 
+}
+.filter-er:hover{
+    border-width: 3px;
+}
+.glossary{
+    padding-left: 1em;
+    display:block;
+    list-style: circle;
+    list-style-position: inside;
+}
+.glossary li{
+    list-style: circle;
+    list-style-position: inside;
+    display:block;
+
+}
+.hamburger {
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+.humidity{
+    float:left;
+    border-width: 1px;
+}
+.humidityButton{
+    width: 25px;
+}
+.LocationTile {
+    width:fit-content;
+    display: inline-block;
+    border-style: groove;
+    border-width: 4px;
+    border-color: cornflowerblue;
+    padding: 10px;
+    background-image: linear-gradient(rgb(51, 113, 230), rgb(134, 171, 241));
+    margin-top: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    font-size: 10px;
+    transition: border-width 0.2s ease-out, font-size 0.2s ease-out; /* Smooth transition for specific properties */
+}
+.LocationTile:hover {
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-width: 5px;
+    font-size: 12px;
+    text-size-adjust: 30px;
+    
+}
+.LocationTile:hover > #delete-button{
+    position:sticky;
+    Justify-content: center;
+    bottom:0;
+}
+.LocationTile:hover > #compare-button{
+    position:sticky;
+    justify-content: center;
+    bottom:0;
+}
+.luckyButton{
+    width: 32px;
+    height: 32px;
+    clear:both;
+    background-image: url(images/LUCKY!.png);
+    background-size: 30px 30px;
+}
+.menu {
+    position: absolute;
+    top: 0;
+    left: -300px; /* initial position off screen */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    overflow-y: auto;
+    transition: left 0.3s;
+}
+.menu-header {
+    background-color: #f4f4f4;
+    padding: 10px;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+.menu li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+.menu li:hover {
+    background-color: #f4f4f4;
+}
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Add this to remove default margin */
+}
+.projectTitle{
+    text-align: center;
+    font-family: myFirstFont;
+    font-size: 50px;
+    color: rgb(56, 93, 123);
+    background-image: linear-gradient(cornflowerblue, snow);
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+.projectDescription{
+    font-family:'Calibri', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 19px;
+    color: rgb(38, 70, 96);
+    max-width: 80%;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 15px;
+}
+.rainButton{
+    width: 25px;
+    border-width: 1px;
+}
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 575px;
+}
+.searchButton{
+    width: 30px;
+    height: 30px;
+    background-image: url(images/search.png);
+    background-size: 30px 30px;
+}
+.searchButton:hover{
+    border-width: 99px;
+}
 .TrueCompare{
     margin-left: 25%;
     width: 50%;
@@ -274,134 +349,16 @@ button{
     padding-right:40px;
     background-color: firebrick;
 }
-
-.compareAttribute{
-    text-align: center;
-    font-weight: bold;
-    padding: 0px;
-    margin:0px;
+.wind{
+    float:left;
+    border-width: 1px;
+}
+.windButton{
+    width: 25px;
+    border-width: 1px;
 }
 
-
-.luckyButton{
-    width: 32px;
-    height: 32px;
-    clear:both;
-    background-image: url(images/LUCKY!.png);
-    background-size: 30px 30px;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-li{
-    display: inline-block;
-    padding-right: 5px;
-    padding-left: 5px;
-}
-
-nav{
-    text-align: center;
-    color: snow;
-    font-family:'Calibri', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 10px;
-    padding-bottom: 3px;
-    outline: 1px solid cornflowerblue;
-    background-color:snow
-}
-
-a:link{
-    color: cornflowerblue;
-}
-a:visited{
-    color:cornflowerblue;
-}
-a:hover{
-    color: snow;
-}
-
-
-/* I added down here */
-/* Menu Styles */
-.hamburger {
-    font-size: 24px;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1000;
-}
-
-.menu {
-    position: absolute;
-    top: 0;
-    left: -300px; /* initial position off screen */
-    width: 300px;
-    height: 100%;
-    background-color: #fff;
-    overflow-y: auto;
-    transition: left 0.3s;
-}
-
-.menu-header {
-    background-color: #f4f4f4;
-    padding: 10px;
-    font-size: 24px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.close-btn {
-    cursor: pointer;
-}
-
-/* ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
-    cursor: pointer;
-}
-
-li:hover {
-    background-color: #f4f4f4;
-} */
-
-.menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0; /* Add this to remove default margin */
-}
-
-.menu li {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
-    cursor: pointer;
-}
-
-.menu li:hover {
-    background-color: #f4f4f4;
-}
-
-/* Custom Cursor IMAGE needed */
-body.custom-cursor {
-    cursor: url(images/Spaceship.png), auto;
-}
-
-.glossary{
-    padding-left: 1em;
-    display:block;
-    list-style: circle;
-    list-style-position: inside;
-}
-.glossary li{
-    list-style: circle;
-    list-style-position: inside;
-    display:block;
-
-}
+@font-face {
+    font-family: myFirstFont;
+    src: url(fonts/Windlass.ttf);
+ }
