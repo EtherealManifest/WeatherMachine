@@ -15,7 +15,7 @@ body{
     flex-direction: column;
 }
 body.custom-cursor {
-    cursor: url(images/victory_slime_sprite.png), auto;
+    cursor: url(images/IceFire.png), auto;
 }
 button{
     border-radius: 10px;
@@ -125,6 +125,7 @@ ul {
     align-items: center; /* Center vertically (optional) */
     flex-wrap: wrap; /* Allow tiles to wrap to new line if needed */
 }
+
 #toggleCursor{
     text-decoration:underline;
     visibility:visible;
@@ -346,6 +347,7 @@ ul {
 .searchButton:hover{
     border-width: 99px;
 }
+
 .TrueCompare{
     margin-left: 25%;
     width: 50%;

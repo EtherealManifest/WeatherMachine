@@ -59,6 +59,7 @@ let ComparisonZone = new Comparison();
 //this class exists purely to determine which elements will be displayed
 //true means it's on by default, false means it is not
 let Displayed = {
+        searchQuery: false,
         name: true,
         region : false,
         country : true,
@@ -95,6 +96,8 @@ let Displayed = {
         //weatherImage is the picture based on the current 'condition'
         weatherImage : false,
         setAll(){
+            //this is used by the cookie catcher
+            this.searchQuery = false,
             this.name = true;
             this.region = true;
             this.country = true;
@@ -132,6 +135,8 @@ let Displayed = {
             updateColor();
     },
     unsetAll(){
+        //4 teh cookie catcher
+        this.searchQuery= false,
         this.name = false;
         this.region = false;
         this.country = false;
@@ -242,7 +247,6 @@ async function checkWeather(City){
         console.log(`${error.name}! ${error.message}`)
         errorMessage.innerHTML = ("Request cannot be processed")
     }
-       
     //The name of the location
     tempLocation.name = data.location.name;
     //The region (In the US, this is the state)
@@ -474,7 +478,7 @@ function displayList(){
                     ComparisonZone.tile1 = TileList[indexCompare]
                     ComparisonZone.updateAndDisplay();
                 }
-                else if(ComparisonZone.tile1.name != ""){  //if there is a TIle in the first slot
+                else if(ComparisonZone.tile1.name != ""){  //if there is a Tile in the first slot
                     ComparisonZone.tile2 = TileList[indexCompare]
                     ComparisonZone.updateAndDisplay();
                     ComparisonZone.tile1 = new Weather();
