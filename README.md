@@ -21,6 +21,7 @@ WeatherMachine is a weather application that allows users to fetch and compare w
 - Local Hosting: Currently optimized for local hosting to ensure rapid development and ease of use
 - Responsive Design: Fully responsive web design for a seamless experience across various devices (not mobile atm)
 - Customization: User preferences are stored using cookies for a personalized experience
+- Basic Forecast Feature with weather attributes
 - ...
 
 ## Built With
@@ -55,20 +56,28 @@ Open `index.html` in your web browser to view the project. (Can use many VSCode 
 - [x] Implement basic city search functionality
 - [x] Display city weather data
 - [x] Develop comparative analysis feature of multiple cities
-- [x] Implement view modes (simple and detailed) - filters?
-- [ ] Introduce cookie-based preference saving
-- [ ] Enchance user interface and UX design
-- [ ] Weather forecasting feature ?
-- [ ] Integration of custom and default weather conditon icons
-- [ ] Light/Dark mode implementation ?
-- [ ] Classic and Modern Theme
+- [x] Implement view modes (simple and detailed) - filters
+- [x] Introduce cookie-based preference saving (INCOMPLETE)
+- [x] Enchance user interface and UX design (basic)
+- [x] Weather forecasting feature (basic)
+- [x] Integration of custom and default weather conditon icons
+- [ ] Light/Dark mode implementation
+- [x] Classic and Modern Theme
 - [ ] Integrate an auto-refresh feature (15 minute)
+- [ ] Printing functionality
 - [ ] Mobile compatibility and responsive design
 - [ ] Localization for multi-language support ?
 
 ## Gallery
 
 Here are some screenshots and images that illustrate the features and user interface of WeatherMachine:
+Demo 1 version
 ![Classic Theme](./images/classicWeatherMachine.png)
 
+Preview of Modern theme + Menu
 ![Modern Theme](./images/modernWeatherMachine.png)
+
+Demo 2 screenshots
+![Classic Theme Home](./images/classicTheme.png)
+![Modern Theme Home](./images/modernTheme.png)
+![Glossary Page](./images/glossary.png)

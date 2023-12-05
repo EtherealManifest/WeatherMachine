@@ -247,6 +247,8 @@ async function checkWeather(City){
         console.log(`${error.name}! ${error.message}`)
         errorMessage.innerHTML = ("Request cannot be processed")
     }
+    //The name of the searched location (for cookies)
+    tempLocation.searchQuery = City
     //The name of the location
     tempLocation.name = data.location.name;
     //The region (In the US, this is the state)
@@ -355,7 +357,7 @@ searchButton.addEventListener("click", ()=>{
 clearButton.addEventListener("click", ()=>{
     //Clear all cookies
     for(let i = 0; i < 10; i++)
-        setCookie(`Location${i}`, "", "0")
+        setCookie(`Location${i}`, null, "0")
 
     //TileList is set to an empty list. THis is because displayList will look at the 
     //size of the list to determine it's next step.
@@ -401,6 +403,9 @@ function displayList(){
     //if the list is empty(It will be set to that when the "Clear" button is pressed),
     //remove elements until the queue is empty
     if(TileList.length == 0){
+        for(let i = 0; i < 10; i++)
+            setCookie(`Location${i}`, null, "0")
+
         //remove all locations from the queue:
         //First, select all elements with the class name"LocationTile"
         //This makes retrieved a list of HTML Location Tags
@@ -414,12 +419,14 @@ function displayList(){
 
     //for every tile in the tile list, create a new <div> element. Then, under that
     //<div> element, add a <p> element that holds each attribute for this weather item. 
-    let i = TileList.length - 1;
-    for( i = 0; i < TileList.length; i++){
+ 
+    for(let i = 0; i < TileList.length; i++){
+
         //create a new <div> element with class "LocationTile" and put it in the "Queue" HTML element
         const newTile =document.createElement("div");
         //add the "LocationTile" Class to it. 
         newTile.classList.add("LocationTile");
+        setCookie(`Location${i}`, TileList[i].searchQuery, "0.1")
         for (const attribute in TileList[i]){
             if(Displayed[attribute]){
                 //add an if-check to set the weather Icon. it will need to be added as an img element
@@ -450,7 +457,6 @@ function displayList(){
                 if(TileList.length == 1){
                     TileList = [];
                     displayList();
-                    setCookie(`Location0`, "", "0")
                     return
                 }
                 TileList.splice(index, 1)
@@ -459,8 +465,6 @@ function displayList(){
                 displayList();
                 TileList = temp;
                 displayList();
-                
-                setCookie(`Location${index}`, "", "0")
             })
             clearTileButton.classList.add(i)
             clearTileButton.setAttribute('id','delete-button');

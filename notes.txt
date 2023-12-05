@@ -9,10 +9,11 @@ is a practical solution. No need to hide everything behind a login. Cookies are 
 client-side and can keep track of user settings.
 
 classic theme needs custom icons and modern theme needs default icons
+Forecast feature has weather icons
 
-The 15 minute thing cannot be done for free tier (we can do 1 hour)
+The 15 minute thing cannot be done for free tier (we can do 1 hour) - no time
 
-There actually is a bunch of premade widgets, bunch of new/free api/data 
+Printing functionality - no time
 
 
 

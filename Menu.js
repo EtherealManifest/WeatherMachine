@@ -1,5 +1,5 @@
 
-
+/* Disabled */
 function toggleMenu() {
     const menu = document.querySelector('.menu');
 
@@ -38,18 +38,35 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
     }
 });
 */
-// The above code is an alternative to the below code
-function toggleTheme() {
-    const themeStyle = document.getElementById('theme-style');
 
-    if (themeStyle.getAttribute('href') === 'classic.css') {
-        themeStyle.setAttribute('href', 'modern.css');
-    } else {
-        themeStyle.setAttribute('href', 'classic.css');
-    }
-}
+// The above code is an alternative to the below code
+// function toggleTheme() {
+//     const themeStyle = document.getElementById('theme-style');
+
+//     if (themeStyle.getAttribute('href') === 'classic.css') {
+//         themeStyle.setAttribute('href', 'modern.css');
+//     } else {
+//         themeStyle.setAttribute('href', 'classic.css');
+//     }
+// }
 
 // When the document is fully loaded, check for the theme cookie (a saved theme preference)
+// document.addEventListener('DOMContentLoaded', function() {
+//     const themeStyle = document.getElementById('theme-style');
+//     const savedTheme = localStorage.getItem('theme');
+//     if (savedTheme) {
+//         themeStyle.setAttribute('href', savedTheme);
+//     }
+// });
+
+/* New code for Navbar Theme Toggle */
+function toggleTheme() {
+    const themeStyle = document.getElementById('theme-style');
+    const newTheme = themeStyle.getAttribute('href') === 'classic.css' ? 'modern.css' : 'classic.css';
+    themeStyle.setAttribute('href', newTheme);
+    localStorage.setItem('theme', newTheme); // Save the theme preference
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const themeStyle = document.getElementById('theme-style');
     const savedTheme = localStorage.getItem('theme');
@@ -58,4 +75,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
+document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
